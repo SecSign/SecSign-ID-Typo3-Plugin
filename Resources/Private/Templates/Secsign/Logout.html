@@ -1,0 +1,18 @@
+
+<f:layout name="Default" />
+<f:section name="main">
+
+    <f:if condition="{greeting}==1">
+        <p>Hi {user}</p>
+    </f:if>
+
+    <f:flashMessages renderMode="div" />
+
+    <f:render partial="FormErrors" arguments="{object:Secsign}" />
+    <f:form action="userlogout"  name="logoutUserSecsign" object="{loginSecsign}">
+        <f:render partial="Secsign/FormFields" />
+        <f:form.submit value="Log Out" />
+    </f:form>
+
+
+</f:section>

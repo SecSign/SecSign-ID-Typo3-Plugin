@@ -1,0 +1,108 @@
+<f:layout name="Default" />
+<f:section name="main">
+
+    <script src="{f:uri.resource(path:'bridge/SecSignIDApi.js')}"></script>
+
+    <!-- polling -->
+    <script>
+        <![CDATA[
+        var timeTillAjaxSessionStateCheck = 3700;
+        var checkSessionStateTimerId = -1;
+
+        function ajaxCheckForSessionState(){
+            var secSignIDApi = new SecSignIDApi({posturl:"]]>{f:uri.resource(path:'bridge/signin-bridge.php')}<![CDATA["});
+            secSignIDApi.getAuthSessionState(
+                    ']]>{auth.secsignid}<![CDATA[',
+                    ']]>{auth.secsignidrequestid}<![CDATA[',
+                    ']]>{auth.secsignidauthsessionid}<![CDATA[',
+                    function rMap(responseMap) {
+                        if(responseMap) {
+                            // check if response map contains error message or if authentication state could not be fetched from server.
+                            if ("errormsg" in responseMap) {
+                                return;
+                            } else if (!("authsessionstate" in responseMap)) {
+                                return;
+                            }
+                            if (responseMap["authsessionstate"] == undefined || responseMap["authsessionstate"].length < 1) {
+                                // got answer without an auth session state. this is not parsable and will throw the error UNKNOWN
+                                return;
+                            }
+
+                            // everything okay. authentication state can be checked...
+                            var authSessionStatus = parseInt(responseMap["authsessionstate"]);
+                            var SESSION_STATE_NOSTATE = 0;
+                            var SESSION_STATE_PENDING = 1;
+                            var SESSION_STATE_EXPIRED = 2;
+                            var SESSION_STATE_AUTHENTICATED = 3;
+                            var SESSION_STATE_DENIED = 4;
+                            var SESSION_STATE_SUSPENDED = 5;
+                            var SESSION_STATE_CANCELED = 6;
+                            var SESSION_STATE_FETCHED = 7;
+                            var SESSION_STATE_INVALID = 8;
+
+                            if ((authSessionStatus == SESSION_STATE_AUTHENTICATED) || (authSessionStatus == SESSION_STATE_DENIED) || (authSessionStatus == SESSION_STATE_EXPIRED)
+                                    || (authSessionStatus == SESSION_STATE_SUSPENDED) || (authSessionStatus == SESSION_STATE_INVALID) || (authSessionStatus == SESSION_STATE_CANCELED)) {
+                                window.clearInterval(checkSessionStateTimerId);
+                                document.getElementById("secsign_check_authsession").click();
+                               // jQuery("button[name='check_authsession']").click();
+                            }
+                        }
+                    }
+        );
+        }
+
+        for (var timerId = 1; timerId < 5000; timerId++) {
+            clearTimeout(timerId);
+        }
+
+        jQuery(document).ready(function () {
+
+            checkSessionStateTimerId = window.setInterval(function () {
+                ajaxCheckForSessionState();
+
+            }, timeTillAjaxSessionStateCheck);
+        });
+        ]]>
+    </script>
+    <!-- end polling -->
+
+
+
+    <p>Accesspass for {auth.secsignid}</p>
+
+    <f:flashMessages renderMode="div" class="secsign-error" />
+
+    <div id="secsignid_accesspass_graphic" class="accesspass_secsignid_login" style="background:transparent url({f:uri.resource(path:'Icons/accesspass_bg.png')}) no-repeat scroll;background-size: 180px 240px;">
+        <img id="secsignid_accesspass" class="accesspass_icon_secsignid_login" src="data:image/png;base64,{auth.secsignidauthsessionicondata}" class="passicon">
+    </div>
+
+    <f:render partial="FormErrors" arguments="{object:Secsign}" />
+
+    <div class="form-login">
+    <div id="secsignid_info" class="button-wrapper left">
+        <f:form action="cancel"  name="accesspassCancelSecsign" object="{loginSecsign}">
+            <f:render partial="Secsign/FormFields" />
+            <f:form.hidden name="secsignid" value="{auth.secsignid}"/>
+            <f:form.hidden name="secsignidauthsessionid" value="{auth.secsignidauthsessionid}"/>
+            <f:form.hidden name="secsignidrequestid" value="{auth.secsignidrequestid}"/>
+            <f:form.hidden name="secsignidservicename" value="{auth.secsignidservicename}"/>
+            <f:form.hidden name="secsignidserviceaddress" value="{auth.secsignidserviceaddress}"/>
+            <f:form.hidden name="secsignidauthsessionicondata" value="{auth.secsignidauthsessionicondata}"/>
+            <f:form.submit class="secsign-button" value="Cancel"/>
+        </f:form>
+    </div>
+    <div  id="secsignid_login" class="button-wrapper">
+        <f:form action="auth"  name="accesspassAuthSecsign" object="{loginSecsign}">
+            <f:render partial="Secsign/FormFields" />
+            <f:form.hidden name="secsignid" value="{auth.secsignid}"/>
+            <f:form.hidden name="secsignidauthsessionid" value="{auth.secsignidauthsessionid}"/>
+            <f:form.hidden name="secsignidrequestid" value="{auth.secsignidrequestid}"/>
+            <f:form.hidden name="secsignidservicename" value="{auth.secsignidservicename}"/>
+            <f:form.hidden name="secsignidserviceaddress" value="{auth.secsignidserviceaddress}"/>
+            <f:form.hidden name="secsignidauthsessionicondata" value="{auth.secsignidauthsessionicondata}"/>
+            <f:form.submit class="secsign-button" id="secsign_check_authsession" name="check_authsession" value="Ok" />
+        </f:form>
+    </div>
+        <div class="clear"></div>
+    </div>
+</f:section>

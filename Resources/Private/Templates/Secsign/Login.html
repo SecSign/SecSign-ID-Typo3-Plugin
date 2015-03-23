@@ -1,0 +1,26 @@
+<f:layout name="Default" />
+<f:section name="main">
+
+    <f:format.html parseFuncTSPath="">{secsignpretext}</f:format.html>
+
+    <f:flashMessages renderMode="div" class="secsign-error" />
+
+    <f:render partial="FormErrors" arguments="{object:Secsign}" />
+
+    <f:form class="form-login" action="accesspass"  name="loginSecsign" object="{loginSecsign}">
+        <f:render partial="Secsign/FormFields" />
+        <label for="secsignid">SecSign ID:</label>
+        <f:form.textfield name="secsignid" value="" id="secsignid"/>
+        <div id="secsignid_info" class="button-wrapper left">
+            <button type="button" class="secsign-button" onclick="window.location.href = 'https://www.secsign.com/sign-up/'">How to sign up</button>
+        </div>
+        <div  id="secsignid_login" class="button-wrapper">
+            <f:form.submit class="secsign-button" value="Log In" />
+        </div>
+        <div class="clear"></div>
+
+    </f:form>
+
+    <f:format.html parseFuncTSPath="">{secsignposttext}</f:format.html>
+
+</f:section>

@@ -1,0 +1,103 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    92,
+                    105
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": true,
+                    "_default3_edit_update": true,
+                    "_default4_delete": true,
+                    "customActions": [
+                        "login",
+                        "logout",
+                        "accesspass",
+                        "settings"
+                    ]
+                },
+                "name": "Secsign",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "1126680840530"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Secsign => settings"
+                },
+                "description": "",
+                "key": "secsignBE",
+                "mainModule": "tools",
+                "name": "secsignBE",
+                "tabLabel": "SecSign"
+            }
+        ],
+        "description": "This extension allows users to authenticate using smart phone running SecSign App.",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 6.2\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "sourceLanguage": "en",
+            "state": "stable",
+            "targetVersion": "6.2",
+            "version": "1.0"
+        },
+        "extensionKey": "secsign",
+        "name": "SecSignID",
+        "originalExtensionKey": "secsign",
+        "persons": [
+            {
+                "company": "SecSign Technologies Inc.",
+                "email": "",
+                "name": "SecSign Technologies Inc.",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Secsign => login,logout,accesspass",
+                    "noncacheableActions": "Secsign => login,accesspass",
+                    "switchableActions": ""
+                },
+                "key": "secsignFE",
+                "name": "secsignFE"
+            }
+        ],
+        "vendorName": "Secsign"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2014-12-30 09:10",
+        "extension_builder_version": "6.2.0",
+        "be_user": " (1)"
+    }
+}

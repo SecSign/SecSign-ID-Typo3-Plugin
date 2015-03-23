@@ -1,0 +1,106 @@
+.tx-secsign{
+    background-color: red;
+}
+
+.tx-secsign button.secsign-button {
+    width: 100% !important;
+    margin: 5px 0;
+}
+
+.tx-secsign div.button-wrapper-spacer{
+    width: 4%;
+    float: left;
+}
+
+.tx-secsign div.button-wrapper{
+    width: 48%;
+    float: left;
+}
+
+.tx-secsign .clear{
+    clear: both;
+}
+
+.secsign-error .message-warning{
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 0, 0.1);
+    border: 1px solid orange;
+    color: orange;
+}
+
+.secsign-error .message-error{
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid red;
+    color: red;
+}
+
+.accesspass_secsignid_login {
+    display:block;
+    position:relative;
+    width:180px;
+    height:240px;
+    margin:0 auto;
+}
+
+.accesspass_icon_secsignid_login {
+    display:block;
+    position:absolute;
+    margin-top:100px;
+    margin-left:40px;
+    width:88px;
+    height:88px;
+}
+
+.secsignid {
+    padding-left: 20px;
+}
+
+body#typo3-index-php .t3-login-secsignid-v6 {
+    padding: 0;
+    margin: 0 0 5px 0;
+    position: relative;
+}
+
+body#typo3-index-php .t3-login-secsignid-v6 label {
+    float: left;
+    padding-right: 10px;
+    width: 90px;
+}
+
+body#typo3-index-php .t3-login-secsignid-v6 input.secsignid {
+    line-height: 16px;
+    margin: 0 0 10px 0;
+    padding: 9px 25px 9px 10px;
+    width: 315px;
+    border: none;
+    background: #ffffff url('../Icons/secsign16x16.png') no-repeat 328px 9px;
+    background-size: 16px;
+    -webkit-appearance: textfield;
+    font-size: 12px;
+}
+
+#t3-login-secsignid-section input.t3-secsignid {
+    background-image: url('../Icons/secsign16x16.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+div#t3-secsignid-error{
+    padding: 0 0 10px 0;
+    color: red;
+}
+
+body#typo3-index-php .t3-login-secsignid-v6 #secsignid_accesspass_graphic{
+    background: transparent url('../Icons/accesspass_bg.png') no-repeat scroll;
+    background-size: 180px 240px;
+    padding-bottom: 20px;
+}
+
+.t3-login-secsignid-v6 #t3-secsign-accesspass-label{
+    text-align: center;
+    font-size: 13px;
+}

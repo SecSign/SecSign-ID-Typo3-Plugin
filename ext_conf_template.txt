@@ -1,0 +1,30 @@
+# cat=Frontend/frontend/a; sort= a; type=string; label=Service Name:The name of this web site as it shall be displayed on the user's smart phone.
+secsignServicenameFE =
+
+# cat=Frontend/frontend/b; type=string; label=Pre-Text:This is the text or HTML that is displayed above the login form.
+secsignPretextFE =
+
+# cat=Frontend/frontend/c; type=string; label=Post-Text:This is the text or HTML that is displayed below the login form.
+secsignPosttextFE =
+
+# cat=Frontend/frontend/d; type=string; label=Login Redirect:Select the page the user will be redirected to after successfully logging in (e.g. page1/xyz.html).
+secsignLoginRedirectFE =
+
+# cat=Frontend/frontend/e; type=string; label=Logout Redirect:Select the page the user will be redirected to after successfully ending their current session by logging out (e.g. page1/xyz.html).
+secsignLogoutRedirectFE =
+
+# cat=Frontend/frontend/f; type=boolean; label=Show Greeting:Show/Hide the simple greeting text.
+secsignGreetingEnableFE = 1
+
+# cat=Frontend/frontend/g; type=boolean; label=Show SecSign ID:Displays SecSign ID instead of Typo3 user name after logging in.
+secsignGreetingNameFE = 1
+
+
+# cat=backend; type=boolean; label=Enable Backend:Use SecSign ID for backend authentication. JavaScript needs to be enabled in your browser.
+secsignEnableBE =
+
+# cat=backend; type=boolean; label=Help:Displays the Help page under Admin Tools - Secsign ID. Reload backend after change.
+secsignHelpEnableBE = 1
+
+# cat=backend; type=boolean; label=Syslog:Writes all backend login errors to the syslog.
+secsignsyslog = 1
