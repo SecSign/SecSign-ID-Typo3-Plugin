@@ -27,9 +27,6 @@ namespace Secsign\Secsign\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-// $Id: SecsignRepository.php,v 1.1 2015/02/12 15:33:18 titus Exp $
-
-
 /**
  * The repository for Secsigns
  */

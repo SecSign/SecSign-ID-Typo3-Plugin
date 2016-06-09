@@ -15,16 +15,16 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'This extension allows users to authenticate using smart phone running SecSign App.',
 	'category' => 'plugin',
 	'author' => 'SecSign Technologies Inc.',
-	'author_email' => '',
+	'author_email' => 'support@secsign.com',
 	'state' => 'stable',
 	'internal' => '',
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
-	'version' => '1.0',
+	'version' => '1.2.1',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.2',
+			'typo3' => '6.0.0-7.6.99',
 		),
 		'conflicts' => array(
 		),

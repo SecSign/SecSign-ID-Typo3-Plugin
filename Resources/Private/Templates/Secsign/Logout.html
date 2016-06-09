@@ -1,18 +1,88 @@
-
 <f:layout name="Default" />
 <f:section name="main">
 
-    <f:if condition="{greeting}==1">
-        <p>Hi {user}</p>
-    </f:if>
+    <link href="{f:uri.resource(path:'css/secsignid_layout.css')}" rel="stylesheet" type="text/css" media="all">
 
-    <f:flashMessages renderMode="div" />
+    <script>
+        //Parameters
+        var url = document.URL;
+        var siteurl = "";
+        var title = "";
+        var secsignPluginPath = "{f:uri.resource(path:'')}";
+        var apiurl = secsignPluginPath+"SecSignIDApi/signin-bridge.php";
+        var form_name_accesspass = "secsignid-accesspass-form";
+        var errormsg = "Your login session has expired, was canceled, or was denied.";
+        var noresponse = "The authentication server sent no response or you are not connected to the internet.";
+        var nosecsignid = "Invalid SecSignID.";
+        var secsignid = "";
+        var frameoption = "{secsignEnableFrameFE}";
 
-    <f:render partial="FormErrors" arguments="{object:Secsign}" />
-    <f:form action="userlogout"  name="logoutUserSecsign" object="{loginSecsign}">
-        <f:render partial="Secsign/FormFields" />
-        <f:form.submit value="Log Out" />
-    </f:form>
+        if (title == "") {
+            title = document.title;
+        }
+        if (typeof backend == "undefined") {
+            var backend = false;
+        }
 
+        //get jQuery & all SecSign ID scripts
+        (function () {
+            var startingTime = new Date().getTime();
+            // Load the script
+            var script = document.createElement("SCRIPT");
+            script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+            script.type = 'text/javascript';
+            document.getElementsByTagName("head")[0].appendChild(script);
 
+            // Poll for jQuery to come into existance
+            var checkReady = function (callback) {
+                if (window.jQuery) {
+                    callback(jQuery);
+                }
+                else {
+                    window.setTimeout(function () {
+                        checkReady(callback);
+                    }, 20);
+                }
+            };
+
+            // Start polling for jQuery
+            checkReady(function ($) {
+                $(function () {
+                    var endingTime = new Date().getTime();
+                    var tookTime = endingTime - startingTime;
+                    console.log('jQuery loaded after ' + tookTime + ' seconds');
+                    jQuery.getScript(secsignPluginPath + "SecSignIDApi/SecSignIDApi.js", function () {
+                        jQuery.getScript(secsignPluginPath + "js/secsignfunctions.js", function () {
+                            console.log('secsign loaded successfully');
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
+    <div id="secsignidplugincontainer">
+            <noscript>
+                <div class="secsignidlogo"></div>
+                <p>It appears that your browser has JavaScript disabled. The SecSign ID login requires your browser to be JavaScript enabled.</p>
+                <a style="color: #fff; text-decoration: none;" id="noscriptbtn"
+                   href="https://www.secsign.com/support/" target="_blank">SecSign Support</a>
+            </noscript>
+            <div id="secsignidplugin">
+                <div id="secsignid-page-logout">
+                    <div class="secsignidlogo"></div>
+                    <f:if condition="{greeting}==1">
+                        <p>Hi {user}</p>
+                    </f:if>
+
+                    <f:flashMessages renderMode="div" />
+
+                    <f:render partial="FormErrors" arguments="{object:Secsign}" />
+                    <f:form action="userlogout"  name="logoutUserSecsign" object="{loginSecsign}">
+                        <f:render partial="Secsign/FormFields" />
+                        <f:form.submit value="Log Out" id="seclogoutbtn"/>
+                    </f:form>
+                </div>
+            </div>
+    </div>
 </f:section>

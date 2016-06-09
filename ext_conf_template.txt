@@ -1,27 +1,30 @@
 # cat=Frontend/frontend/a; sort= a; type=string; label=Service Name:The name of this web site as it shall be displayed on the user's smart phone.
 secsignServicenameFE =
 
-# cat=Frontend/frontend/b; type=string; label=Pre-Text:This is the text or HTML that is displayed above the login form.
-secsignPretextFE =
-
-# cat=Frontend/frontend/c; type=string; label=Post-Text:This is the text or HTML that is displayed below the login form.
-secsignPosttextFE =
-
 # cat=Frontend/frontend/d; type=string; label=Login Redirect:Select the page the user will be redirected to after successfully logging in (e.g. page1/xyz.html).
 secsignLoginRedirectFE =
 
 # cat=Frontend/frontend/e; type=string; label=Logout Redirect:Select the page the user will be redirected to after successfully ending their current session by logging out (e.g. page1/xyz.html).
 secsignLogoutRedirectFE =
 
-# cat=Frontend/frontend/f; type=boolean; label=Show Greeting:Show/Hide the simple greeting text.
+# cat=Frontend/frontend/f; type=boolean; label=Enable Frontend Password Login:Use Typo3 credentials for authentication.
+secsignEnablePwFE = 1
+
+# cat=Frontend/frontend/g; type=boolean; label=Enable Frontend frame and box-shadow:Change the layout of the SecSign ID frontend login form.
+secsignEnableFrameFE = 1
+
+# cat=Frontend/frontend/h; type=boolean; label=Show Greeting:Show/Hide the simple greeting text.
 secsignGreetingEnableFE = 1
 
-# cat=Frontend/frontend/g; type=boolean; label=Show SecSign ID:Displays SecSign ID instead of Typo3 user name after logging in.
+# cat=Frontend/frontend/i; type=boolean; label=Show SecSign ID:Displays SecSign ID instead of Typo3 user name after logging in.
 secsignGreetingNameFE = 1
 
 
-# cat=backend; type=boolean; label=Enable Backend:Use SecSign ID for backend authentication. JavaScript needs to be enabled in your browser.
+# cat=backend; type=boolean; label=Enable SecSign ID backend login:Use SecSign ID for backend authentication. JavaScript needs to be enabled in your browser.
 secsignEnableBE =
+
+# cat=backend; type=boolean; label=Disable Typo3 password login:If the SecSign ID backend authentication is enabled, you can disable the backend login via Typo3 passwords. Users without a valid SecSign ID are not able to login anymore.
+secsignDisableBEPW =
 
 # cat=backend; type=boolean; label=Help:Displays the Help page under Admin Tools - Secsign ID. Reload backend after change.
 secsignHelpEnableBE = 1

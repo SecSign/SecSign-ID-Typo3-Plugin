@@ -1,4 +1,6 @@
-<!-- ###PAGE### begin -->
+<f:layout name="Login" />
+<f:section name="loginFormFields">
+
 <script type="text/javascript">
     //get cookie if pw or secsign form
     function getCookie(name) {
@@ -27,7 +29,7 @@
         var noresponse = "The authentication server sent no response or you are not connected to the internet.";
         var nosecsignid = "Invalid SecSignID.";
         var secsignid = "";
-        var frameoption = 1;
+        var frameoption = false;
         var formname = "";
         var form_name_accesspass = formname;
         var backend = true;
@@ -58,7 +60,16 @@
                 $(function () {
                     var endingTime = new Date().getTime();
                     var tookTime = endingTime - startingTime;
-                    console.log('jQuery loaded after ' + tookTime + ' seconds');
+
+                    console.log('jQuery loaded after ' + tookTime + ' ms');
+                    
+                    jQuery( document ).ready(function() {
+    					jQuery('#t3loginformfields').remove();
+    					jQuery('#t3-login-submit').remove();
+    					jQuery('.typo3-login-logo').remove();
+    					
+					});
+					
                     jQuery.getScript(secsignPluginPath + "SecSignIDApi/SecSignIDApi.js", function () {
                         jQuery.getScript(secsignPluginPath + "js/secsignfunctions.js", function () {
                             console.log('secsign loaded successfully');
@@ -75,65 +86,27 @@
                 });
             });
         })();
+        
     } else {
-        // init typo3
-        TYPO3BackendLogin = {
-            start: function () {
-            },
-            preloadImages: function () {
-            },
-            registerEventListeners: function () {
-            },
-            observeEvents: function (element, events, handler) {
-            },
-            setVisibilityOfClearIcon: function (formField, clearIcon) {
-            },
-            showCapsLockWarning: function (alertIcon, event) {
-            },
-            clearInputField: function (formField) {
-            },
-            switchToOpenId: function () {
-            },
-            switchToDefault: function () {
-            },
-            checkCookieSupport: function () {
-            },
-            showCookieWarning: function () {
-            },
-            hideCookieWarning: function () {
-            },
-            setLogintypeCookie: function (type) {
-            },
-            checkForLogintypeCookie: function () {
-            },
-            interfaceSelectorChanged: function (event) {
-            },
-            checkForInterfaceCookie: function () {
-            },
-            showLoginProcess: function () {
-            }
-        };
-
+    	
         function gotoSecSignLogin(){
             deleteCookie('secsignLoginPw');
             location.reload();
+            return false;
         }
 
         function disableBtn() {
-            //document.getElementById("t3-login-submit").disabled = true;
+            document.getElementById("t3-login-submit").disabled = true;
         }
     }
 </script>
 
-<div id="t3-login-form" ###CSS_CLASSES###>
-    ###LOGO###
 
     <div id="pwform">
         <div id="secsignidplugincontainer">
             <div style="display:block;" id="secsignidplugin">
                 <div style="display:block;" id="secsignid-page-pw">
-                    <div class="secsignidlogo"></div>
-                    ###FORM###
+                    <div class="secsignidlogo" id="secsignpwt3"></div>
                 </div>
             </div>
         </div>
@@ -179,29 +152,7 @@
                 <!-- Page Password Login -->
                 <div id="secsignid-page-pw">
                     <div class="secsignidlogo"></div>
-                    <div id="login-form">
-                        <input type="text" id="t3-username" name="username" value="" placeholder="Username"
-                               class="t3-username" autofocus="autofocus">
-                        <input type="password" id="t3-password" name="p_field" value="" placeholder="Password"
-                               class="t3-password">
-                        <!-- ###INTERFACE_SELECTOR### begin -->
-                        <div class="t3-login-interface" id="t3-login-interface-section">
-
-                            <select id="t3-interfaceselector" name="interface" class="c-interfaceselector" tabindex="3">
-                                <option value="backend">Backend</option>
-                                <option value="frontend">Frontend</option>
-                            </select>
-                        </div>
-                        <!-- ###INTERFACE_SELECTOR### end -->
-                        <input type="submit" name="commandLI" id="t3-login-submit" value="Login"
-                               class="t3-login-submit">
-                    </div>
-
-                    <div class="secsignid-login-footer">
-                        <a class="linktext" href="#" id="secsignid-login-secsignid">Log in with SecSign ID</a>
-
-                        <div class="clear"></div>
-                    </div>
+                    <div id="t3-login-form"></div>
                 </div>
 
                 <!-- Page Info SecSign Login -->
@@ -294,50 +245,63 @@
             </div>
         </div>
     </div>
-</div>
+    
+    <style type="text/css">
+    	#t3-login-submit {
+    		clear:both;
+    		margin-bottom:30px;
+    	}
+		#secsignid-login-secsignid {
+			display: block;
+			width: 100%;
+			height: 32px;
+			padding: 6px;
+			font-size: 12px;
+			line-height: 1.5;
+			color: #666;
+			float:left;
+			clear:both;
+		}
+    </style>
+    <div id="t3loginformfields">             
+   	<p>
+   		<a class="linktext" onclick="gotoSecSignLogin()" href="#" id="secsignid-login-secsignid">Log in with SecSign ID</a>
+   	</p>
+     <div class="form-group t3js-login-username-section" id="t3-login-username-section">
+        <div class="form-control-wrap">
+            <div class="form-control-holder">
+                <input type="text" id="t3-username" name="username" value="" placeholder="Username" class="form-control input-login t3js-clearable t3js-login-username-field" autofocus="autofocus" required="required" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group t3js-login-password-section" id="t3-login-password-section">
+        <div class="form-control-wrap">
+            <div class="form-control-holder">
+                <input type="password" id="t3-password" name="p_field" value="" placeholder="Password" class="form-control input-login t3js-clearable t3js-login-password-field" required="required" data-rsa-encryption="t3-field-userident" />
+            </div>
+        </div>
+    </div>
+    </div>              
+
 
 <script>
+	// call function at onload event 
+	// because it will try to get an element by id 
+	// which appears in the rendered template after this section.
 	window.onload = function(){
-		if (showPW == 'true') {
-			el = document.getElementById('secsignidform');
-			el.parentNode.removeChild(el);
-		} else {
-			el = document.getElementById('pwform');
-			el.parentNode.removeChild(el);
-		
-			document.getElementById('login-secsignid').focus();
-		}
+	    if (showPW == 'true') {
+    		document.getElementById('secsignidplugincontainer').style.display = 'none';
+    		document.getElementById('t3-login-submit-section').appendChild(document.getElementById('secsignid-login-secsignid'));
+	    } else {
+    	    el = document.getElementById('pwform');
+        	el.parentNode.removeChild(el);
+        	
+        	document.getElementById('login-secsignid').focus();
+    	}
     }
 </script>
-<!-- ###PAGE### end -->
 
-
-<!-- ###LOGIN_FORM### begin -->
-
-<!-- ###LOGIN_ERROR### begin -->
-<div id="t3-login-error" class="t3-login-alert t3-login-alert-error">
-    <h2>###ERROR_LOGIN_TITLE###</h2>
-
-    <p>###ERROR_LOGIN_DESCRIPTION###</p>
-</div>
-<!-- ###LOGIN_ERROR### end -->
-
-
-<input type="text" id="login-user" name="username" value="###VALUE_USERNAME###" placeholder="###LABEL_USERNAME###"
-       class="t3-username" autofocus="autofocus"/>
-<input type="password" id="login-pw" name="p_field" value="###VALUE_PASSWORD###" placeholder="###LABEL_PASSWORD###"
-       class="t3-password"/>
-
-<!-- ###INTERFACE_SELECTOR### begin -->
-<div class="t3-login-interface" id="t3-login-interface-section">
-    ###VALUE_INTERFACE###
-</div>
-<!-- ###INTERFACE_SELECTOR### end -->
-
-<input type="submit" onclick="disableBtn();return true;" name="commandLI" id="t3-login-submit" value="###VALUE_SUBMIT###" class="t3-login-submit"/>
-<a href="#" onclick="gotoSecSignLogin();return false;" style="margin-top:20px" id="secsignid-login-secsignid">Log in with SecSign ID</a>
-
-<!-- ###LOGIN_FORM### end -->
+</f:section>
 
 
 
@@ -355,7 +319,8 @@
 
 
 
+<<<<<<< HEAD
 
 
-
-
+=======
+>>>>>>> vT3_Version_7_fixes

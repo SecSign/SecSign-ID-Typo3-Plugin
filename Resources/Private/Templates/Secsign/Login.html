@@ -1,26 +1,217 @@
 <f:layout name="Default" />
 <f:section name="main">
 
-    <f:format.html parseFuncTSPath="">{secsignpretext}</f:format.html>
+    <link href="{f:uri.resource(path:'css/secsignid_layout.css')}" rel="stylesheet" type="text/css" media="all">
 
-    <f:flashMessages renderMode="div" class="secsign-error" />
+    <script>
+        //Parameters
+        var url = document.URL;
+        var siteurl = "";
+        var title = "{secsignServicenameFE}";
+        var secsignPluginPath = "{f:uri.resource(path:'')}";
+        var apiurl = secsignPluginPath+"SecSignIDApi/signin-bridge.php";
+        var form_name_accesspass = "secsignid-accesspass-form";
+        var errormsg = "Your login session has expired, was canceled, or was denied.";
+        var noresponse = "The authentication server sent no response or you are not connected to the internet.";
+        var nosecsignid = "Invalid SecSignID.";
+        var secsignid = "";
+        var frameoption = "{secsignEnableFrameFE}";
 
-    <f:render partial="FormErrors" arguments="{object:Secsign}" />
+        if (title == "") {
+            title = document.title;
+        }
+        if (typeof backend == "undefined") {
+            var backend = false;
+        }
 
-    <f:form class="form-login" action="accesspass"  name="loginSecsign" object="{loginSecsign}">
-        <f:render partial="Secsign/FormFields" />
-        <label for="secsignid">SecSign ID:</label>
-        <f:form.textfield name="secsignid" value="" id="secsignid"/>
-        <div id="secsignid_info" class="button-wrapper left">
-            <button type="button" class="secsign-button" onclick="window.location.href = 'https://www.secsign.com/sign-up/'">How to sign up</button>
+        //get jQuery & all SecSign ID scripts
+        (function () {
+            var startingTime = new Date().getTime();
+            // Load the script
+            var script = document.createElement("SCRIPT");
+            script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+            script.type = 'text/javascript';
+            document.getElementsByTagName("head")[0].appendChild(script);
+
+            // Poll for jQuery to come into existance
+            var checkReady = function (callback) {
+                if (window.jQuery) {
+                    callback(jQuery);
+                }
+                else {
+                    window.setTimeout(function () {
+                        checkReady(callback);
+                    }, 20);
+                }
+            };
+
+            // Start polling for jQuery
+            checkReady(function ($) {
+                $(function () {
+                    var endingTime = new Date().getTime();
+                    var tookTime = endingTime - startingTime;
+                    console.log('jQuery loaded after ' + tookTime + ' seconds');
+                    jQuery.getScript(secsignPluginPath + "SecSignIDApi/SecSignIDApi.js", function () {
+                        jQuery.getScript(secsignPluginPath + "js/secsignfunctions.js", function () {
+                            console.log('secsign loaded successfully');
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
+
+
+<div id="secsignidplugincontainer">
+    <noscript>
+        <div class="secsignidlogo"></div>
+        <p>nojs</p>
+        <a style="color: #fff; text-decoration: none;" id="noscriptbtn"
+           href="https://www.secsign.com/support/" target="_blank">SecSign Support</a>
+    </noscript>
+    <div style="display:none;" id="secsignidplugin">
+        <!-- Page Login -->
+        <div id="secsignid-page-login">
+            <div class="secsignidlogo"></div>
+            <div id="secsignid-error"></div>
+            <f:flashMessages renderMode="div" class="secsign-error" id="secsign-error-typo3" />
+            <f:render partial="FormErrors" arguments="{object:Secsign}" />
+            <form id="secsignid-loginform">
+                <div class="form-group">
+                    <input type="text" class="form-control login-field" value="" placeholder="SecSign ID"
+                           id="login-secsignid" name="secsigniduserid">
+                    <label class="login-field-icon fui-user" for="login-secsignid"></label>
+                </div>
+
+                <div id="secsignid-checkbox">
+		        <span>
+	                <input id="rememberme" name="rememberme" type="checkbox" value="rememberme" checked>
+	                <label for="rememberme">Remember my SecSign ID</label>
+	            </span>
+                </div>
+                <button id="secloginbtn" type="submit">Log in</button>
+            </form>
+            <div class="secsignid-login-footer">
+                <a href="#" class="infobutton" id="secsignid-infobutton">Info</a>
+                <f:if condition="{secsignEnablePwFE}==1">
+                    <a href="#" class="linktext" id="secsignid-pw">Log in with a password</a>
+                </f:if>
+
+                <div class="clear"></div>
+            </div>
         </div>
-        <div  id="secsignid_login" class="button-wrapper">
-            <f:form.submit class="secsign-button" value="Log In" />
+
+        <!-- Page Password Login -->
+        <div id="secsignid-page-pw">
+            <div class="secsignidlogo"></div>
+            <f:if condition="{secsignEnablePwFE}==1">
+                <f:form action="auth" name="accesspassAuthSecsignPW" object="{loginSecsign}" id="secsignid-accesspass-form-pw" >
+                    <input id="login-user" type="text" name="user" value="" placeholder="Username">
+                    <input id="login-pw" type="password" name="pass" value="" placeholder="Password">
+                    <input type="submit" name="submit" value="Login" id="pwdloginbtn">
+
+                    <div class="felogin-hidden">
+                        <input type="hidden" name="logintype" value="login">
+                        <input type="hidden" name="pid" value="">
+                        <input type="hidden" name="redirect_url" value="">
+                        <input type="hidden" name="tx_felogin_pi1[noredirect]" value="0">
+
+                    </div>
+                </f:form>
+            </f:if>
+
+            <div class="secsignid-login-footer">
+                <a class="linktext" href="#" id="secsignid-login-secsignid">Log in with SecSign ID</a>
+
+                <div class="clear"></div>
+            </div>
         </div>
-        <div class="clear"></div>
 
-    </f:form>
+        <!-- Page Info SecSign Login -->
+        <div id="secsignid-page-info">
+            <div class="secsignidlogo secsignidlogo-left"></div>
+            <h3 id="headinginfo">Eliminate Passwords and Password Theft.</h3>
 
-    <f:format.html parseFuncTSPath="">{secsignposttext}</f:format.html>
+            <div class="clear"></div>
+            <p>Protect your organization and your sensitive data with two-factor authentication.</p>
+            <a id="secsignid-learnmore" href="https://www.secsign.com/products/secsign-id/" target="_blank">Learn more</a>
 
+            <img style="margin: 0 auto;width: 100%;display: block;max-width: 200px;"
+                 src="{f:uri.resource(path:'images/secsignhelp.png')}">
+
+            <a class="linktext" id="secsignid-info-secsignid" href="#">&lt; Go back to the login screen</a>
+
+            <a style="color: #fff; text-decoration: none;"
+               href="https://www.secsign.com/try-it/#login" target="_blank"
+               id="secsignidapp1">See how it works</a>
+
+            <div class="clear"></div>
+        </div>
+
+        <!-- Page Accesspass -->
+        <div id="secsignid-page-accesspass">
+            <div class="secsignidlogo"></div>
+
+            <div id="secsignid-accesspass-container">
+                <img id="secsignid-accesspass-img"
+                     src="{f:uri.resource(path:'images/preload.gif')}">
+            </div>
+
+            <div id="secsignid-accesspass-info">
+                <a href="#" class="infobutton" id="secsignid-questionbutton">Info</a>
+
+                <p class="accesspass-id">Access pass for <b id="accesspass-secsignid"></b></p>
+
+                <div class="clear"></div>
+            </div>
+
+            <f:form action="auth" name="accesspassAuthSecsign" object="{loginSecsign}" id="secsignid-accesspass-form">
+                <button id="secsignid-cancelbutton" type="submit">Cancel</button>
+
+                <!-- OK -->
+                <input type="hidden" name="check_authsession" id="check_authsession" value="1"/>
+                <input type="hidden" name="option" value="com_secsignid"/>
+                <input type="hidden" name="task" value="getAuthSessionState"/>
+
+                <!-- Cancel
+                <input type="hidden" name="cancel_authsession" id="cancel_authsession" value="0"/>
+                -->
+
+                <!-- Values -->
+                <input type="hidden" name="return" value=""/>
+                <input type="hidden" name="secsigniduserid" value=""/>
+                <input type="hidden" name="secsignidauthsessionid" value=""/>
+                <input type="hidden" name="secsignidrequestid" value=""/>
+                <input type="hidden" name="secsignidservicename" value=""/>
+                <input type="hidden" name="secsignidserviceaddress" value=""/>
+                <input type="hidden" name="secsignidauthsessionicondata" value=""/>
+                <input type="hidden" name="redirect_to" value=""/>
+
+            </f:form>
+        </div>
+
+        <!-- Page Question SecSign Accesspass -->
+        <div id="secsignid-page-question">
+            <div class="secsignidlogo secsignidlogo-left"></div>
+            <h3 id="headingquestion">How to sign in with SecSign ID</h3>
+
+            <div class="clear"></div>
+            <p>In order to log in using your SecSign ID, you need to follow the following steps:</p>
+            <ol>
+                <li>Open the SecSign ID app on your mobile device</li>
+                <li>Tap your ID</li>
+                <li>Enter your PIN or passcode or scan your fingerprint</li>
+                <li>Select the correct access symbol</li>
+            </ol>
+
+            <a class="linktext" id="secsignid-question-secsignid" href="#">&lt; Go back to the Access Pass verification</a>
+
+            <a style="color: #fff; text-decoration: none;" class="button-secsign blue"
+               href="https://www.secsign.com/try-it/#account" target="_blank" id="secsignidapp2">Get the SecSign ID App</a>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
 </f:section>

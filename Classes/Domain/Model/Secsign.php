@@ -27,10 +27,6 @@ namespace Secsign\Secsign\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-
-// $Id: Secsign.php,v 1.1 2015/02/12 15:33:18 titus Exp $
-
-
 /**
  * Secsign
  */

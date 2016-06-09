@@ -1,7 +1,12 @@
 <?php
 namespace Secsign\Secsign\Controller;
+
+$apiPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('secsign') . 'Resources/Public/SecSignIDApi/phpApi/SecSignIDApi.php';
+require_once($apiPath);
+
+use AuthSession;
+use SecSignIDApi;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Secsign\Secsign\Controller\SecSignIDApi;
 
 /***************************************************************
  *
@@ -28,8 +33,6 @@ use Secsign\Secsign\Controller\SecSignIDApi;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-// $Id: SecsignController.php,v 1.1 2015/02/12 15:33:18 titus Exp $
-
 /**
  * SecsignController
  */
@@ -48,24 +51,11 @@ class SecsignController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $this->redirect('logout');
         }
 
-        //check if authsession exists to prevent reload
-        $sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses', 'tx_secsign_secsignfe');
-        if (is_array($sessionData)) {
-            if (array_key_exists('authsession', $sessionData)) {
-                if ($sessionData['authsession'] != null)
-                    $this->redirect('accesspass');
-            }
-        }
-
         $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['secsign']);
-        $pretext = $confArray['secsignPretextFE'];
-        $posttext = $confArray['secsignPosttextFE'];
-        if($pretext=='')$pretext='For more comfort and security use SecSign ID for sign-in.';
-        if($posttext=='')$posttext='More information about the advantages of our two-factor authentication <a href="https://secsign.com">secsign.com</a>';
-
-        $this->view->assign('secsignpretext', $pretext);
-        $this->view->assign('secsignposttext', $posttext);
         $this->view->assign('secsign', 'login');
+        $this->view->assign('secsignEnablePwFE', $confArray['secsignEnablePwFE']);
+        $this->view->assign('secsignServicenameFE', $confArray['secsignServicenameFE']);
+        $this->view->assign('secsignEnableFrameFE', $confArray['secsignEnableFrameFE']);
     }
 
     /**
@@ -87,6 +77,7 @@ class SecsignController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $this->view->assign('greeting', $confArray['secsignGreetingEnableFE']);
         $this->view->assign('user', $user);
+        $this->view->assign('secsignEnableFrameFE', $confArray['secsignEnableFrameFE']);
     }
 
     /**
@@ -193,8 +184,51 @@ class SecsignController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function authAction()
     {
+        //Password login?
+        if(GeneralUtility::_POST('user')){
+            $loginData=array(
+                'uname' => GeneralUtility::_POST('user'),
+                'uident_text'=> GeneralUtility::_POST('pass'),
+                'status' => 'login'
+            );
+            $GLOBALS['TSFE']->fe_user->checkPid=0; //do not use a particular pid
+            $info= $GLOBALS['TSFE']->fe_user->getAuthInfoArray();
+            $user=$GLOBALS['TSFE']->fe_user->fetchUserRecord($info['db_user'],$loginData['uname']);
+
+            $password=GeneralUtility::_POST('pass');
+            $saltedPassword=$user['password'];
+
+            if (\TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled('FE')) {
+                $objSalt = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance($saltedPassword);
+                if (is_object($objSalt)) {
+                    $success = $objSalt->checkPassword($password, $saltedPassword);
+                }
+            }
+
+            if($success) {
+                //login successfull
+                $GLOBALS['TSFE']->fe_user->createUserSession($user);
+                $GLOBALS['TSFE']->fe_user->setKey('ses', 'dummy', true);
+                //delete SecSign authsession
+                $GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_secsign_secsignfe', null);
+                $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['secsign']);
+                if($confArray['secsignLoginRedirectFE']){
+                    $this->redirectToURI($confArray['secsignLoginRedirectFE']);
+                }else{
+                    $this->redirect('logout');
+                }
+            } else {
+                //login failed
+                //delete authsession
+                $GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_secsign_secsignfe', NULL);
+                $this->addFlashMessage('Login failed.','',\TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+                $this->redirect('login');
+            }
+        }
+
         //check secsign auth response
         $secSignIDApi = NULL;
+
         try {
             $secSignIDApi = new SecSignIDApi();
         } catch (\Exception $e) {
@@ -203,12 +237,12 @@ class SecsignController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $authSession = new AuthSession();
         $authSession->createAuthSessionFromArray(array(
-            'secsignid' => $this->request->getArgument('secsignid'),
-            'authsessionid' => $this->request->getArgument('secsignidauthsessionid'),
-            'requestid' => $this->request->getArgument('secsignidrequestid'),
-            'servicename' => $this->request->getArgument('secsignidservicename'),
-            'serviceaddress' => $this->request->getArgument('secsignidserviceaddress'),
-            'authsessionicondata' => $this->request->getArgument('secsignidauthsessionicondata')
+            'secsignid' => GeneralUtility::_POST('secsigniduserid'),
+            'authsessionid' => GeneralUtility::_POST('secsignidauthsessionid'),
+            'requestid' => GeneralUtility::_POST('secsignidrequestid'),
+            'servicename' => GeneralUtility::_POST('secsignidservicename'),
+            'serviceaddress' => GeneralUtility::_POST('secsignidserviceaddress'),
+            'authsessionicondata' => GeneralUtility::_POST('secsignidauthsessionicondata'),
         ));
 
         try {
@@ -232,7 +266,7 @@ class SecsignController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         } else {
             //AUTHENTICATED
             //get typo3 user
-            $secsignid = $this->request->getArgument('secsignid');
+            $secsignid = GeneralUtility::_POST('secsigniduserid');
             $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('username', 'fe_users', 'secsignid="'.$secsignid.'"');
             if($res->field_count == 0){
                 //no user with SecSign ID
@@ -310,5 +344,6 @@ class SecsignController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 
     public function initializeAction() {
+
     }
 }

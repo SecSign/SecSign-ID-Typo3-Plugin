@@ -10,7 +10,7 @@
 
 
         <div >
-            <h1><img style="height: 25px; padding: 0 5px 0 0;" src="{f:uri.resource(path:'Icons/secsign16x16.png')}">SecSign ID</h1>
+            <h1><img style="max-width: 800px;height: 25px; padding: 0 5px 0 0;" src="{f:uri.resource(path:'images/secsign16x16.png')}">SecSign ID</h1>
             <p>Use SecSign ID two-factor authentication on your Typo3 site with an easy and highly secure user login using iOS or Android mobile devices.</p>
 
            <ol>
@@ -36,7 +36,7 @@
                 <li>Log into the Typo3 backend and click on "Admin Tools &gt; Extension Manager" in the main menu.
                  <li>Click on the "Upload Extension" button, select the downloaded zip archive in the opening form and hit "Upload!".</li>
                 <li>When the extension was successfully installed, you will see a green activated icon.</li>
-            </ol><img src="{f:uri.resource(path:'screenshots/install.png')}" style="margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
+            </ol><img src="{f:uri.resource(path:'screenshots/install.png')}" style="max-width: 800px;margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
             <hr id="config">
 
 
@@ -51,20 +51,21 @@
             <p><strong>Frontend:</strong></p>
             <ul>
                 <li><strong>Service name:</strong> The name of this web site as it shall be displayed on the user\'s smart phone.</li>
-                <li><strong>Pre-text:</strong> This is the text or HTML that is displayed above the login form.</li>
-                <li><strong>Post-text:</strong> This is the text or HTML that is displayed below the login form.</li>
                 <li><strong>Login Redirection Page:</strong> Select the page the user will be redirected to after a successful login. If empty, the user will return to the same page.</li>
                 <li><strong>Logout Redirection Page:</strong> Select the page the user will be redirected to after successfully ending their current session by logging out.If empty, the user will return to the same page.</li>
+                <li><strong>Enable Frontend Password Login:</strong> Enables the Typo3 password login for frontend users. To improve security, you should always use SSL if you enable this option.</li>
+                <li><strong>Enable Frontend frame and box-shadow:</strong>  Change the layout of the SecSign ID frontend login form.</li>
                 <li><strong>Show Greeting:</strong> Show or hide the simple greeting text.</li>
                 <li><strong>Show Name/Username:</strong> Displays the Typo3 name or SecSign ID after login.</li>
             </ul>
             <p><strong>Backend:</strong></p>
             <ul>
                 <li><strong>Enable Backend:</strong> Use SecSign ID for backend authentication. JavaScript needs to be enabled in your browser.</li>
+                <li><strong>Disable Typo3 password login:</strong> If the SecSign ID backend authentication is enabled, you can disable the backend login with Typo3 credentials. Users without a valid SecSign ID are not able to login anymore.
                 <li><strong>Help:</strong> Displays the Help page under Admin Tools - Secsign ID. Reload backend after change.</li>
                 <li><strong>Syslog:</strong> Writes all backend login errors to the syslog.</li>
             </ul>
-            <img src="{f:uri.resource(path:'screenshots/config.png')}" style="margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
+            <img src="{f:uri.resource(path:'screenshots/config1.png')}" style="max-width: 800px;margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
             <hr id="displayloginform">
 
 
@@ -76,7 +77,7 @@
                 <li>Create a new content element by clicking on a "Add a new record" icon and choose "Plugins &gt; General Plugin" in the opening form</li>
                 <li>Click on the plugin tab, choose "secsignFE" and save your changes.</li>
             </ol>
-            <img src="{f:uri.resource(path:'screenshots/install2.png')}" style="margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
+            <img src="{f:uri.resource(path:'screenshots/install2.png')}" style="max-width: 800px;margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
             <hr id="fe">
 
 
@@ -86,14 +87,14 @@
             <ol>
                 <li>Go to your Typo3 backend and open a website user profile.</li>
                 <li>Assign a SecSign ID to the profile to allow SecSign ID authentication.</li>
-            </ol><img src="{f:uri.resource(path:'screenshots/fe.png')}" style="margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
+            </ol><img src="{f:uri.resource(path:'screenshots/fe.png')}" style="max-width: 800px;margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
             <hr id="be">
             <h2>4) BE User Configuration</h2>
             <p>To use the SecSign ID two-factor authentication on your Typo3 backend login, you need to assign a SecSign ID to a backend user profile.</p>
             <ol>
                 <li>Go to your Typo3 backend and click on "System &gt; Backend Users" at the main menu.</li>
                 <li>Assign a SecSign ID to the user profile to allow SecSign ID authentication.</li>
-            </ol><img src="{f:uri.resource(path:'screenshots/be.png')}" style="margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
+            </ol><img src="{f:uri.resource(path:'screenshots/be.png')}" style="max-width: 800px;margin: 20px auto;border: 1px solid #E5E5E5;width: 90%;display: block;">
             <hr id="troubleshooting">
 
 

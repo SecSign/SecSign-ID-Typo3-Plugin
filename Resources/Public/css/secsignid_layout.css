@@ -1,0 +1,411 @@
+/**
+
+// $Id: secsignid_layout.css,v 1.4 2015/04/09 16:41:39 titus Exp $
+
+*/
+
+
+/*
+Blue: #599fcb
+
+*/
+
+/*T3*/
+
+#t3-login-interface-section{
+    margin: 0 0 20px 0;
+}
+
+#secsignidplugin #secsignid-page-pw, #secsignidplugin #secsignid-page-info, #secsignidplugin #secsignid-page-accesspass, #secsignidplugin #secsignid-page-question {
+    display: none;
+}
+
+#secsignidplugin, noscript {
+    background-color: #fff;
+    max-width: 400px;
+    min-width: 100px;
+    padding: 30px;
+    margin: 0px auto 30px auto;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.28);
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    display: block;
+}
+
+#secsignidplugin p, #secsignidplugin li {
+    color: rgb(52, 52, 52);
+    font-size: 15px;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    text-decoration: none;
+    background-image: none;
+    box-shadow: none;
+    text-shadow:none;
+    border: none;
+    outline: none;
+}
+
+#secsignidplugin label, #secsignidplugincontainer p{
+    color: #000;
+}
+
+#secsignidplugin .secsignidlogo, noscript .secsignidlogo {
+    background: url(../images/secsignidlogo.png) no-repeat top left;
+    width: 170px;
+    height: 65px;
+    margin-bottom: 30px;
+}
+
+#secsignidplugin #login-secsignid, #secsignidplugin #login-pw, #secsignidplugin #login-user, #secsignidplugin #wp-username, #secsignidplugin #wp-password, #secsignidplugin #user_login, #secsignidplugin #user_pass {
+    font-size: 15px;
+    height: 40px;
+    color: #34495e;
+    border: 2px solid #599fcb;
+    border-radius: 6px;
+    display: block;
+    width: 100%;
+    padding: 4px 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #ffffff url('../images/secsign16x16.png') no-repeat 98% center;
+    background-size: 20px;
+    -webkit-appearance: textfield;
+    outline: none;
+}
+
+#secsignidplugin #login-user, #secsignidplugin #login-pw{
+    margin: 20px 0;
+}
+
+#secsignidplugin #login-pw, #secsignidplugin #login-user, #secsignidplugin #wp-username, #secsignidplugin #wp-password, #secsignidplugin #user_login, #secsignidplugin #user_pass {
+    background: none;
+}
+
+#secsignidplugin #headinginfo, #secsignidplugin #headingquestion{
+    font-size: 18px;
+    line-height: 20px;
+    padding: 10px 0 0 65px;
+    margin: 0 0 20px 0;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    color: rgb(52, 52, 52);
+}
+
+#noscriptbtn, #secsignidplugin #secloginbtn, #secsignidplugin #seclogoutbtn, #secsignidplugin #pwdloginbtn, #secsignidplugin #secsignidapp1, #secsignidplugin #secsignidapp2, #secsignidplugin #wp-submit, #secsignidplugin #t3-login-submit {
+    padding: 0;
+    margin: 0;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+    min-height: 40px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #0089d1;
+    -webkit-transition: background-color 300ms linear;
+    -moz-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+    background-image: none;
+    box-shadow: none;
+    text-shadow:none;
+    border: none;
+    outline: none;
+}
+
+#secsignidplugin #secsignid-cancelbutton{
+    padding: 0;
+    margin: 0;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+    min-height: 40px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: rgb(200, 200, 200);
+    -webkit-transition: background-color 300ms linear;
+    -moz-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+    background-image: none;
+    box-shadow: none;
+    text-shadow:none;
+    border: none;
+    outline: none;
+}
+
+#secsignidplugin #secsignid-cancelbutton:hover{
+    background-color: rgb(161, 161, 161);
+}
+
+#noscriptbtn, #secsignidplugin #secloginbtn:hover, #secsignidplugin #seclogoutbtn:hover, #secsignidplugin #pwdloginbtn:hover, #secsignidplugin #secsignidapp1:hover, #secsignidplugin #secsignidapp2:hover, #secsignidplugin #wp-submit:hover {
+    background-color: #599fcb;
+}
+
+#secsignidplugin .form-group {
+    position: relative;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+#secsignidplugin div > span > input[type='radio'],
+#secsignidplugin div > span > input[type='checkbox'] {
+    opacity: 0;
+    float: left;
+    width: 20px;
+    position: absolute;
+    z-index: -99;
+}
+
+#secsignidplugin div > span > input[type='radio'] + label,
+#secsignidplugin div > span > input[type='checkbox'] + label {
+    margin: 0;
+    clear: none;
+    padding: 3px 0 3px 32px;
+    line-height: 20px;
+    cursor: pointer;
+    background: url(../images/checkbox.png) left top no-repeat;
+    font-size: 15px;
+    font-weight:normal;
+}
+
+#secsignidplugin div > span > input[type='checkbox']:checked + label {
+    background: url(../images/checkbox.png) left -33px no-repeat;
+}
+
+#secsignidplugin #secsignid-checkbox {
+    margin: 20px 0;
+}
+
+#secsignidplugin .linktext {
+    float: right;
+    color: #bdc3c7;
+    text-decoration: none;
+    line-height: 25px;
+}
+
+#secsignidplugin .linktext:hover {
+    color: #599fcb;
+}
+
+#secsignidplugin #secsignid-info-secsignid, #secsignidplugin #secsignid-learnmore, #secsignidplugin #secsignid-pw, #secsignidplugin #secsignid-login-secsignid, #secsignidplugin #secsignid-question-secsignid{
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: normal;
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+#secsignidplugin #secsignid-info-secsignid:hover, #secsignidplugin #secsignid-learnmore:hover, #secsignidplugin #secsignid-pw:hover, #secsignidplugin #secsignid-login-secsignid:hover, #secsignidplugin #secsignid-question-secsignid:hover{
+    color: #599fcb;
+    text-decoration: none;
+}
+
+#secsignidplugin #secsignid-info-secsignid, #secsignidplugin #secsignid-question-secsignid{
+    float: none;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#secsignidplugin #secsignid-login-secsignid{
+    float: none;
+    display: block;
+    text-align: center;
+}
+
+#secsignidplugin .secsignid-login-footer {
+    margin: 20px 0 0 0;
+}
+
+#secsignidplugin .clear {
+    clear: both;
+}
+
+#secsignidplugin .secsignidlogo-left {
+    width: 55px;
+    height: 65px;
+    float: left;
+}
+
+#secsignidplugin #secsignid-learnmore{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #599fcb;
+    font-weight: bolder;
+    margin: 20px 0;
+}
+
+/* Accesspass */
+#secsignidplugin #secsignid-accesspass-img{
+    width: 88px;
+    min-height: 88px;
+    margin: 0 auto;
+    padding-top: 105px;
+    opacity: 0.6;
+    display: block;
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+#secsignidplugin #secsignid-accesspass-info{
+    margin: 20px 0;
+}
+
+#secsignidplugin .accesspass-id{
+    display: inline-block;
+    float: right;
+    line-height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+#secsignidplugin ol{
+    margin-left: 20px;
+}
+
+/* BUTTONS */
+
+#secsignidplugin .infobutton{
+    text-indent: -9999px;
+    height: 25px;
+    width: 24px;
+    display: inline-block;
+    -webkit-transition-property: none;
+    transition-property: none;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+    -webkit-transition-timing-function: none;
+    transition-timing-function: none;
+}
+
+#secsignidplugin #secsignid-questionbutton {
+    background: url(../images/icons.png) right top no-repeat;
+}
+
+#secsignidplugin #secsignid-questionbutton:hover {
+    background: url(../images/icons.png) right bottom no-repeat;
+}
+
+#secsignidplugin #secsignid-infobutton {
+    background: url(../images/icons.png) left top no-repeat;
+}
+
+#secsignidplugin #secsignid-infobutton:hover {
+    background: url(../images/icons.png) left bottom no-repeat;
+}
+
+#secsignidplugin #secsignid-accesspass-container{
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    height: 235px;
+    background: url(../images/accesspass_bg.png) no-repeat top right;
+    background-size: 180px;
+}
+
+#secsignidplugin #secsignid-error, #secsignidplugin #secsignid-reg-error, #secsignidplugin #secsign-error-typo3 {
+    margin: 30px 0;
+    padding: 10px;
+    background-color: rgba(255, 229, 229, 1);
+    border-radius: 5px;
+    border: 2px solid rgba(253, 152, 152, 1);
+    display: none;
+    color: #000;
+}
+
+#secsignidplugin #secsignid-reg-error, #secsignidplugin #secsign-error-typo3{
+    display: block;
+}
+
+/* Responsive */
+
+
+#secsignidplugin.miniview .secsignidlogo, noscript .secsignidlogo{
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px auto;
+    float: none;
+}
+
+#secsignidplugin.miniview .infobutton{
+    margin: 0 auto;
+    display: block;
+}
+
+#secsignidplugin.miniview .linktext{
+    float: none;
+    display: block;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 20px;
+}
+
+#secsignidplugin.miniview #headinginfo, #secsignidplugin.miniview #headingquestion{
+    padding: 0;
+    text-align: center;
+}
+
+#secsignidplugin.miniview .accesspass-id{
+    display: block;
+    float: none;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#secsignid-accesspass-container.miniview{
+    background: none !important;
+    display: inline !important;
+}
+
+#secsignid-accesspass-img.miniview{
+    padding-top: 10px !important;
+}
+
+#secsignid-loginform, #secsignidplugin #login-form, #secsign-login-form, #secsignid-accesspass-form{
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+#secsignidplugin .login-remember{
+    padding-bottom: 15px;
+}
+
+
+
+#secsignidplugin input[type="checkbox"]:checked+label:before{
+    display:none;
+}
+
+#secsignidplugin input[type="checkbox"]:checked+label:after{
+    display:none;
+}
+
+
+
+/* Link on Joomla Login Screen */
+#form-login #secsignid-login-secsignid{
+    margin: 20px 0px;
+    text-align: center;
+    display: block;
+}

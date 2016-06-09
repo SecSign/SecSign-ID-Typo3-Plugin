@@ -1,11 +1,15 @@
 <?php
 namespace Secsign\Secsign;
 
-use Secsign\Secsign\Controller\AuthSession;
-use Secsign\Secsign\Controller\SecSignIDApi;
+$apiPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('secsign') . 'Resources/Public/SecSignIDApi/phpApi/SecSignIDApi.php';
+require_once($apiPath);
+
+use AuthSession;
+use SecSignIDApi;
 use TYPO3\CMS\Core\Error\Exception;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 /***************************************************************
  *  Copyright notice
@@ -29,10 +33,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
- 
- 
-// $Id: SecsignAuthService.php,v 1.1 2015/02/12 15:33:18 titus Exp $
- 
 class SecsignAuthService extends \TYPO3\CMS\Sv\AbstractAuthenticationService
 {
 
@@ -53,7 +53,24 @@ class SecsignAuthService extends \TYPO3\CMS\Sv\AbstractAuthenticationService
 
     function getUser()
     {
+        $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['secsign']);
         $user = FALSE;
+
+        //if username & password provided, go on except it is disabled
+        if (GeneralUtility::_GP('userident') != "") {
+                if($confArray['secsignDisableBEPW'] && $confArray['secsignEnableBE']){
+                    //delete PW login Cookie
+                    if (isset($_COOKIE['secsignLoginPw'])) {
+                        unset($_COOKIE['secsignLoginPw']);
+                        setcookie('secsignLoginPw', '', time() - 3600); // empty value and old timestamp
+                    }
+                    header('Refresh: 1; url=index.php?err=2');
+                    die();
+                }
+                $user = $this->fetchUserRecord(GeneralUtility::_GP('username'));
+                return $user;
+        }
+
         if ($this->login['status'] == 'login') {
             if ($this->login['uident']) {
                 $user = $this->fetchUserRecord($this->login['uname']);
@@ -66,7 +83,6 @@ class SecsignAuthService extends \TYPO3\CMS\Sv\AbstractAuthenticationService
             }
         }
 
-        $typo3User = GeneralUtility::_GP('secsigniduserid');
         $secsignid = GeneralUtility::_GP('secsigniduserid');
         $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('username', 'be_users', 'secsignid="' . $secsignid . '"');
         if ($res->field_count != 1) {
@@ -79,7 +95,8 @@ class SecsignAuthService extends \TYPO3\CMS\Sv\AbstractAuthenticationService
             $typo3User = $row['username'];
             if ($typo3User == null OR $typo3User == '') {
                 $this->writeSysLog('No Typo3 BE user found for the given SecSign ID.', self::NOTICE);
-                return false;
+                header('Refresh: 1; url=index.php?err=1');
+                die();
             }
         }
         $user = $this->fetchUserRecord($typo3User);
@@ -95,12 +112,16 @@ class SecsignAuthService extends \TYPO3\CMS\Sv\AbstractAuthenticationService
      *  - 200 - the service was able to authenticate the user
      *
      */
-    public
-    function authUser(array $user)
+    public function authUser(array $user)
     {
+        //if disabled, go on
         $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['secsign']);
         if (!$confArray['secsignEnableBE']) {
-            //if disabled, go on
+            return 100;
+        }
+
+        //if username & password provided, go on
+        if (GeneralUtility::_POST('username')) {
             return 100;
         }
 
