@@ -1,11 +1,469 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-30T21:10:01Z" product-name="secsign">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2011-10-17T20:22:32Z" product-name="secsignfe">
 		<header/>
 		<body>
-			<trans-unit id="tx_secsign_domain_model_secsign">
-				<source>Secsign</source>
+			
+                        
+                        
+                        <!--new Values -->
+                        <trans-unit id="msg_SESSION_STATE_DENIED">
+				<source>Access Pass denied! Please restart login or contact the administrator, if you did not denie the login.</source>
+                                <target>Access Pass abgelehnt! Bitte starten Sie den Login erneut oder kontaktieren Sie den Admin, wenn Sie den Login nicht abgelehnt haben</target>
 			</trans-unit>
+                        <trans-unit id="msg_SESSION_STATE_SUSPENDED">
+				<source>Session supsended! Please restart login.</source>
+                                <target>Session aufgehoben! Bitte starten Sie den Login neu.</target>
+			</trans-unit>
+                        <trans-unit id="msg_SESSION_STATE_INVALID">
+				<source>Invalid session! Please restart login.</source>
+                                <target>Ungültige Session! Bitte starten Sie den Login neu.</target>
+			</trans-unit>
+                        <trans-unit id="msg_SESSION_STATE_EXPIRED">
+				<source>Session expired! Please restart login.</source>
+                                <target>Session abgelaufen! Bitte starten Sie den Login neu.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign_msg_wrong_password">
+				<source>Wrong password or username!</source>
+                                <target>Falsches Passwort oder Benutzername</target>
+			</trans-unit>
+                        <trans-unit id="msg_ERROR_LOGIN">
+				<source>Error occured during operation. Try again or contact administrator.</source>
+                                <target>Fehler während Ausführung aufgetreten. Versuchen Sie es erneut oder kontaktieren Sie den Administrator.</target>
+			</trans-unit>
+                        <trans-unit id="msg_ALREADY_EXISTS_ADMIN">
+				<source>The automatic SecSign ID for you already exists. Please contact the Administrator.</source>
+                                <target>Die automatisch gewählte SecSign ID existiert bereits. Bitte kontaktieren Sie Ihren Administrator.</target>
+			</trans-unit>
+                        <trans-unit id="msg_SECSIGNID_EXISTS">
+				<source>The chosen SecSign ID already exists.</source>
+                                <target>Die gewählte SecSign ID existiert bereits. </target>
+			</trans-unit>
+                        <trans-unit id="msg_SECSIGNID_NOT_EXISTS">
+				<source>The chosen SecSign ID does not exists.</source>
+                                <target>Die gewählte SecSign ID existiert nicht. </target>
+			</trans-unit>
+                        <trans-unit id="msg_SECSIGNID_DUPLICATE">
+				<source>The chosen SecSign ID already belongs to another user.</source>
+                                <target>Die gewählte SecSign ID ist bereits einem anderen Nutzer zugeordnet. </target>
+			</trans-unit>
+                        
+                        <trans-unit id="msg_FIDO_ERROR">
+				<source>Error on authentication with FIDO. Try again.</source>
+                                <target>Fehler bei der Authentifizierung mit FIDO. Versuchen Sie es erneut. </target>
+			</trans-unit>
+                        
+                        
+                        <trans-unit id="logout">
+				<source>Logout</source>
+                                <target>Logout</target>
+			</trans-unit>
+                        <trans-unit id="username">
+				<source>Username:</source>
+                                <target>Benutzername:</target>
+			</trans-unit>
+                        <trans-unit id="msg_NO_USER">
+                            <source>No User for authed SecSign ID found! Please retry!</source>
+                            <target>Kein Benutzer zur authentifzierten SecSign ID gefunden! Bitte versuchen Sie es erneut!</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.login.button.text">
+                            <source>Login</source>
+                            <target>Login</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.login.username.label">
+                            <source>Username</source>
+                            <target>Benutzername</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.login.password.label">
+                            <source>Password</source>
+                            <target>Passwort</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.login.heading">
+                            <source>Login</source>
+                            <target>Login</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.accesspass.for.text">
+                            <source>Access pass for </source>
+                            <target>Access Pass für</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.button.cancel">
+                            <source>Cancel</source>
+                            <target>Abbrechen</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.button.logout">
+                            <source>Logout</source>
+                            <target>Logout</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.heading">
+                            <source>Activate Two-Factor-Authentication</source>
+                            <target>Aktiviere Zwei-Faktor-Authentifizierung</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.start">
+                            <source>Complete the following steps to activate the two-factor authentication for your account.</source>
+                            <target>Befolgen Sie die nachfolgenden Schritte, um die Zwei-Faktor-Authentifizierung für Ihren Account zu aktivieren.</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.1">
+                            <source>1. Download the SecSign ID App for your Two-Factor-Authentication:</source>
+                            <target>1. Laden Sie die SecSign ID App f\u00FCr ihre Zwei Faktor Authentifizierung runter:</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.2">
+                            <source>2. Scan the QR-Code.</source>
+                            <target>2. Scannen Sie den QR-Code.</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.qr">
+                            <source>Your individual QR-Code:</source>
+                            <target>Ihr persönlicher QR-Code:</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.activate.twofa.qr.desktop">
+                            <source>Use Desktop App</source>
+                            <target>Benutze Desktop App</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.qr.continue">
+                            <source>The authentication will resume automatically after scanning the QR-Code and creation of the SecSign ID.</source>
+                            <target>Die Authentifzierung wird automatisch fortgeführt, nachdem der QR-Code gescannt und die ID erstellt wurde.</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.mail">
+                            <source>Your E-Mail-address:</source>
+                            <target>Ihre E-Mail-Adresse:</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.activate.twofa.3">
+                            <source>3. Enter the confirmation code sent to your Email-address in the SecSign ID app</source>
+                            <target>3. Geben Sie den Bestätigungs-Code, den Sie per Mail erhalten, in der SecSign App ein.</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.3.important">
+                            <source>Important:</source>
+                            <target>Wichtig:</target>    
+                        </trans-unit>
+                        
+                       <trans-unit id="secsign.activate.twofa.3.spam">
+                            <source>The Email may take a couple of minutes. If you did not receive the code, please check your SPAM-folder.</source>
+                            <target>Es kann einige Minuten dauern, bis der Bestätigungscode in Ihrem Postfach eingeht. Sollten Sie keinen Code erhalten, sehen Sie in Ihrem SPAM-Ordner nach.</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.activate.twofa.3.end">
+                            <source>Entering the code is the final step of the setup. Your ID is now ready to use. The authentication will resume automatically.</source>
+                            <target>Nachdem Sie den Code in der App eingegeben haben, ist die Einrichtung abgeschlossen und Ihre SecSign ID erstellt. </target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.create.text.1">
+                            <source>This system uses two-factor authentication.</source>
+                            <target>Das System nutzt eine Zwei-Faktor Authentifizierung.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.create.text.2">
+                            <source>To use the two-factor authentication you need a SecSign ID. You have not linked a SecSign ID to your account yet. In the following step you can add an ID to your account.</source>
+                            <target>F\u00fcr die Zwei-Faktor Authentifizierung ben\u00f6tigen Sie eine SecSign ID. Sie haben noch keine SecSign ID eingetragen und jetzt die M\u00f6glichkeit eine ID f\u00fcr Sie zu erstellen und hinzuzuf\u00fcgen.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.create.text.3">
+                            <source>After creating your SecSign ID you will be presented with a QR code. Please scan this code with your SecSign ID app to activate the ID in the app. You can then use the ID to log in.</source>
+                            <target>Anschlie\u00dfend bekommen Sie einen QR-Code angezeigt, welchen Sie mit der SecSignID-App scannen k\u00f6nnen und so ihre neue ID in ihrer App hinzuf\u00fcgen k\u00f6nnen. Danach k\u00f6nnen Sie sich mit dieser ID anmelden und die ID f\u00fcr zukunftige Logins nutzen. Wenn Sie abbrechen, werden Sie nicht eingeloggt und bekommen beim n\u00e4chsten Versuch erneut die M\u00f6glichkeit eine ID hinzuzuf\u00fcgen.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.create.already.link">
+                            <source>I already created a SecSign ID</source>
+                            <target>Ich habe bereits eine SecSign ID erstellt.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.create.new.field">
+                            <source>New SecSign ID</source>
+                            <target>Neue SecSign ID</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.create.new.button">
+                            <source>Create new ID</source>
+                            <target>Erstelle neue SecSign ID</target>    
+                        </trans-unit>
+                        
+                        <trans-unit id="secsign.add.text.1">
+                            <source>This system uses two-factor authentication.</source>
+                            <target>Das System nutzt eine Zwei-Faktor Authentifizierung.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.add.text.2">
+                            <source>To use the two-factor authentication you need a SecSign ID. You have not linked a SecSign ID to your account yet. In the following step you can add an ID to your account.</source>
+                            <target>Für die Zwei-Faktor Authentifizierung benötigen Sie eine SecSign ID. Sie haben noch keine SecSign ID eingetragen und jetzt die Möglichkeit eine ID für Sie hinzuzufügen.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.add.text.3">
+                            <source>You can then use this ID to log in. If you cancel the procedure you will not be logged in and you can add an ID with your next login with your username and password.</source>
+                            <target>Anschließend bekommen Sie die Möglichkeit sich mit dieser ID anzumelden. Wenn Sie abbrechen, werden Sie nicht eingeloggt und bekommen beim nächsten Versuch erneut die Möglichkeit eine ID hinzuzufügen.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.add.create.link">
+                            <source>I didn't create a SecSign ID yet</source>
+                            <target>Ich habe noch keine ID erstellt.</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.add.add.field">
+                            <source>Your SecSign ID</source>
+                            <target>Ihre SecSign ID</target>    
+                        </trans-unit>
+                        
+                         <trans-unit id="secsign.add.add.button">
+                            <source>Add ID</source>
+                            <target>ID Hinzufügen</target>    
+                        </trans-unit>
+
+                        <trans-unit id="tx_secsign_domain_model_secsign">
+                            <source>SecSign</source>
+                            <target>SecSign</target>
+			</trans-unit>
+                        
+                         <trans-unit id="secsign.login.name">
+                            <source>SecSign Login</source>
+                            <target>SecSign Login</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.default.title">
+                            <source>Authentication Method</source>
+                            <target>Authentifizierungs-Methode</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.default.subtitle">
+                            <source>Select an authentication method to continue.</source>
+                            <target>W\u00e4hlen Sie eine Authentifizierungs-Methode, um fortzufahren.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.id.title">
+                            <source>SecSign ID</source>
+                            <target>SecSign ID</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.id.description">
+                            <source>Login by authenticating with the SecSign ID using your mobile or desktop SecSign ID app.</source>
+                            <target>Authentifizieren Sie sich beim Anmelden einfach \u00fcber die sichere SecSign ID.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.totp.title">
+                            <source>Authenticator-App</source>
+                            <target>Authentifizierungs-App</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.totp.description">
+                            <source>Login by authenticating with an OTP generated by an Authenticator-App (e.g. Google Authenticator)</source>
+                            <target>Sie erhalten beim Anmelden ein Einmal-Code an Ihre Authentifizierungs-App und m\u00f6ssen diesen eingeben.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.fido.title">
+                            <source>FIDO-Authenticator</source>
+                            <target>FIDO-Authenticator</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.fido.description">
+                            <source>Log in by authenticating with your FIDO-Authenticator. Multiple FIDO-Authenticator can be registered.</source>
+                            <target>Melden Sie sich \u00fcber eine Authentifizierung mit dem FIDO-Authenticator an. Es k\u00f6nnen mehrere FIDO-Authenticator registriert werden.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.mail.title">
+                            <source>Email</source>
+                            <target>E-Mail</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.mail.description">
+                            <source>Login by authenticating with an Email OTP sent to your Email address</source>
+                            <target>Sie erhalten beim Anmelden ein Einmal-Code an Ihre E-Mail Adresse und m\u00f6ssen diesen eingeben.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.new.title">
+                            <source>Active other login option</source>
+                            <target>Aktivieren anderer Authentifizierung.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.new.description">
+                            <source>Activate other authentication methods which can be also used to authenticate yourself.</source>
+                            <target>Aktivieren Sie eine andere Authentifizierungs-Methode, welche dann zum Authentifizieren genutzt werden kann.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.inactive.subtitle">
+                            <source>Select an authentication method which you want to setup after sign-in.</source>
+                            <target>W\u00e4hlen Sie eine Authentifizierungs-Methode , welche Sie einrichten wollen.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.inactive.title">
+                            <source>Select a new authentication method</source>
+                            <target>W\u00e4hlen Sie eine neue Authentifizierungs-Methode.</target>
+			</trans-unit>
+                        
+                         <trans-unit id="secsignid.login.methodselect.active.subtitle">
+                            <source>Select an authentication method which you want to use to authenticate yourself before setting up the new authentication method.</source>
+                            <target>\u00e4hlen Sie eine Authentifizierungs-Methode, welche Sie zur Authentifizierung nutzen wollen, bevor Sie die neue Methode aktivieren.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.methodselect.active.title">
+                            <source>Authentication</source>
+                            <target>Authentifizierung</target>
+			</trans-unit>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <trans-unit id="secsignid.login.fido.heading">
+                            <source>FIDO-Authenticator</source>
+                            <target>FIDO-Authenticator</target>
+			</trans-unit>
+                       
+                       
+                       <trans-unit id="secsignid.login.fido.auth.subheading">
+                            <source>Authenticate with a security key, for example the Yubikey</source>
+                            <target>Authentifizieren Sie sich mit einem Sicherheitsschl\u00fcssel, beispielsweise dem Yubikey.</target>
+			</trans-unit>
+                       
+                        <trans-unit id="secsignid.login.fido.auth.text">
+                            <source>Press the "Authenticate with FIDO-Authenticator" button to start the authentication process with your FIDO-Authenticator.</source>
+                            <target>Starten Sie den Authentifizierungsprozess mit Ihrem FIDO-Authenticator, indem Sie \u201cMit FIDO-Authenticator authentifizieren\u201d ausw\u00e4hlen.</target>
+			</trans-unit>
+                       
+                        <trans-unit id="secsignid.login.fido.auth.button">
+                            <source>Authenticate with FIDO-Authenticator</source>
+                            <target>Mit FIDO Authenticator authentifizieren</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.fido.hint">
+                            <source>Connect your security key (for example the Yubikey) to your computer or mobile device or hold it against the RFID reader of your device, or use a Platform-Authenticator (e.g. TouchID, FaceID or Windows Hello). Click continue when your browser asks you about permission for using the authenticator.</source>
+                            <target>Verbinden Sie Ihren Sicherheitsschl\u00fcssel (beispielsweise der Yubikey) mit Ihrem Computer oder mobilen Endger\u00e4t, oder halten Sie es gegen das RFID Leseger\u00e4t. Klicken Sie auf \u201cWeiter\u201d, wenn die Meldung zur Nutzung des Sicherheitsschl\u00fcssels auf Ihrem Ger\u00e4t erscheint.</target>
+			</trans-unit>
+                       
+                       
+                       
+                       
+                       <trans-unit id="secsignid.login.fido.register.subheading">
+                            <source>Register a new security key, for example the Yubikey, or use a available Platform-Authenticator (e.g. TouchID, FaceID or Windows Hello)</source>
+                            <target>Registrieren Sie einen neuen Sicherheitsschl\u00FCssel, beispielsweise den Yubikey, oder einen Plattform-Authentikator (z.B. TouchID, FaceID oder Windows Hello).</target>
+			</trans-unit>
+                       
+                        <trans-unit id="secsignid.login.fido.register.text">
+                            <source>Before you can authenticate yourself with a FIDO-Authenticator it needs to be registered first.</source>
+                            <target>Sie m\u00fcssen den FIDO-Authenticator registrieren, bevor Sie sich damit authentifizieren k\u00f6nnen.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.fido.register.label">
+                            <source>Enter a name for the FIDO-Authenticator to identify it after the registration.</source>
+                            <target>Geben Sie einen Namen f\u00fcr den FIDO-Authenticator an, um ihn nach der Registrierung identifizieren zu k\u00f6nnen.</target>
+			</trans-unit>
+                      
+                        <trans-unit id="secsignid.login.fido.register.button">
+                            <source>Register FIDO-Authenticator</source>
+                            <target>FIDO-Authenticator registrieren</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.login.fido.register.input.hint">
+                            <source>e.g. My Yubikey</source>
+                            <target>Zum Beispiel: My Yubikey</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsignid.button.next">
+                            <source>Next</source>
+                            <target>Weiter</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.mailotp.heading">
+                            <source>Mail-OTP</source>
+                            <target>Mail-OTP</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.mailotp.code.label">
+                            <source>Please enter Code</source>
+                            <target>Bitte Code eingeben</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.mailotp.text">
+                            <source>Please enter the OTP here to verify your login for:</source>
+                            <target>Bitte geben Sie das OTP ein, um den Login zu verifzieren f\u00fcr:</target>
+			</trans-unit>
+                        
+                        
+                        <trans-unit id="secsign.login.totp.heading">
+                            <source>OTP-Authenticator</source>
+                            <target>OTP-Authenticator</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.totp.text">
+                            <source>Please enter the OTP here to verify your login for:</source>
+                            <target>Bitte geben Sie das OTP ein, um den Login zu verifzieren f\u00fcr:</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign_msg_wrong_totp">
+                            <source>Wrong TOTP, please try again!</source>
+                            <target>Falsches TOTP, bitte versuchen Sie es erneut!</target>
+			</trans-unit>
+                        
+                        
+                        
+                        <trans-unit id="secsign.login.totp.code.label">
+                            <source>Please enter Code</source>
+                            <target>Bitte Code eingeben</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.totp.register.subheading">
+                            <source>Scan the QR-Code</source>
+                            <target>Scannen Sie den QR-Code</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.totp.register.text.1">
+                            <source>Use a Authenticator-App (Google Authenticator, Authy, etc.) to scan the QR-Code.</source>
+                            <target>Nutzen Sie Ihre Authentifizierungs-App (Google Authenticator, Authy, etc.) um den QR-Code einzuscannen.</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.totp.register.text.2">
+                            <source>After scanning the QR code, click "Next".</source>
+                            <target>Nachdem Sie den QR-Code eingescannt haben, klicken Sie auf "Weiter".</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.totp.register.code.link">
+                            <source>Cant scan QR-Code?</source>
+                            <target>QR-Code nicht sichtbar?</target>
+			</trans-unit>
+                        
+                        <trans-unit id="secsign.login.totp.register.code.text">
+                            <source>Code for Desktop Apps:</source>
+                            <target>Code für Desktop Apps:</target>
+			</trans-unit>
+                        
+
+
+
+                        
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                        
+                        <trans-unit id="secsignid.buttons.back.name">
+                            <source>Back</source>
+                            <target>Zurück</target>
+			</trans-unit>
+                        
+                        
+                        
 		</body>
 	</file>
 </xliff>
+
+

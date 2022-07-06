@@ -1,0 +1,50 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+     
+    <!--###TEMPLATE_LOGIN_IN_PROGRESS###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+        <script>
+            jQuery(document).ready(function ($) {
+                
+                $("#progressbar").progressbar({value: false});
+                
+                jQuery.post(
+                    window.location.href,
+                    {
+                        "user":jQuery("#secsign_username").val(),
+                        "pass":"pass:;secsign_token:"+jQuery("#authedHash").val(),
+                        "pid":"",
+                        "logintype":"login"
+                    }
+                )
+                .done(function() {
+                    window.setTimeout(function()
+                    {
+                        if(jQuery("#returnURL").val()!=='')
+                        {
+                            window.location.replace(jQuery("#returnURL").val());
+                        }else{
+                            window.location.replace(window.location.href);
+                        }
+                    },1000)
+                    
+                });
+            });
+            
+            
+        </script>
+    </f:section >
+       
+    <input type="hidden" id="returnURL" value="###RETURN_URL###" />
+    <input type="hidden" id="authedHash" value="###AUTHED_HASH###"/>
+    <input type="hidden" id="secsignid" value="###SECSIGN_ID###"/>
+    <input type="hidden" id="secsign_username" value="###USERNAME###"/>
+    
+    <center><div id="progressbar" style="height:15px;width:200px"></div></center>          
+    
+    <!--###TEMPLATE_LOGIN_IN_PROGRESS###-->
+
+   </f:cache.disable>

@@ -1,0 +1,192 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+    
+    <!--###BOTH_DIALOG_TEMPLATE_BEGIN###-->  
+    <f:section name="HeaderAssets">
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <script type="text/javascript" src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+            <link rel="stylesheet" href="/typo3conf/ext/secsign/Resources/Public/css/secsignid_layout.css"/>
+    </f:section >
+            <div id="dialog" title="Basic dialog">
+                <div id="content">
+                    <div class="login-form-container">
+                        <div id="login-form" class="login-form">
+    <!--###BOTH_DIALOG_TEMPLATE_BEGIN###-->  
+                        <!--###BOTH_CREATE_TEMPLATE###-->   
+                            <div id="secsign-create" style="display:###show-create###">
+                                <p>###secsign.create.text.1###</p>
+                                <p>###secsign.create.text.2###</p>
+                                <p>###secsign.create.text.3###</p>
+
+                                <form id="secsign-create-form" method="POST">
+
+                                    <a id="add-existing" class="button-link" style="display:###add-visible###">
+                                        <p>###secsign.create.already.link###</p>
+                                    </a>
+
+                                    <input type="hidden" name="secsign_method" value="secsign_free_create" />
+                                    <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                                    <input type="hidden" name="secsign_username" value="###secsign_username###"/>
+                                    ###ERROR_MSG###
+                                    <div class="login-form-field">
+                                        <label class="login-form-field-label">###secsign.create.new.field###</label>
+                                        <div class="login-form-field-input">
+                                            <input required id="input-wishid" name="wishID" type="text" value="">
+                                        </div>
+                                    </div>
+
+                                    <button id="secsign-create-submit-button" class="submit-button">
+                                        <span class="submit-button-text">
+                                            ###secsign.create.new.button###
+                                        </span>
+                                    </button>
+
+                                    <button class="submit-button cancel-button" id="free-create-cancel-button">
+                                        <span class="submit-button-text">
+                                            ###secsign.button.cancel###
+                                        </span>
+                                    </button>
+
+
+                                </form>
+                            </div>
+                            <!--###BOTH_CREATE_TEMPLATE###--> 
+                            <!--###BOTH_ADD_TEMPLATE###--> 
+                            <div id="secsign-add" style="display:###show-add###">
+                                <p>###secsign.add.text.1###</p>
+                                <p>###secsign.add.text.2###</p>
+                                <p>###secsign.add.text.3###</p>
+
+                                <form id="secsign-add-form" method="POST">
+
+                                    <a id="create-new" class="button-link" style="display:###create-visible###">
+                                        <p>###secsign.add.create.link###</p>
+                                    </a>
+                                    
+                                    <input type="hidden" name="secsign_method" value="secsign_existing_create" />
+                                    <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                                    <input type="hidden" name="secsign_username" value="###secsign_username###"/>
+                                    ###ERROR_MSG###
+                                    <div class="login-form-field">
+                                        <label class="login-form-field-label">
+                                            ###secsign.add.add.field###
+                                        </label>
+                                        <div class="login-form-field-input">
+                                            <input required id="input-addid" name="existingID" type="text">
+                                        </div>
+                                    </div>
+
+                                    <button id="secsign-add-submit-button" class="submit-button" >
+                                        <span class="submit-button-text">###secsign.add.add.button###</span>
+                                    </button>
+
+                                    <button class="submit-button cancel-button" id="add-create-cancel-button" >
+                                        <span class="submit-button-text"> ###secsign.button.cancel###</span>
+                                    </button>
+                                
+                                </form>
+                            </div>
+                            <!--###BOTH_ADD_TEMPLATE###--> 
+<!--###BOTH_DIALOG_TEMPLATE_END###-->  
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <script>
+
+                    jQuery("#dialog").dialog({
+                        appendTo: "body",
+                        dialogClass: "no-close no-bar",
+                        draggable: false,
+                    });
+                    
+                   jQuery("#free-create-cancel-button").click(function( )
+                    {
+                        window.location.href=window.location.href;
+                    });
+                    
+                    jQuery("#add-create-cancel-button").click(function( )
+                    {
+                        window.location.href=window.location.href;
+                    });
+                    
+                    jQuery("#add-existing").click(function( )
+                    {
+                        jQuery("#secsign-add").show();
+                        jQuery("#secsign-create").hide();
+                    });
+                   
+                   jQuery("#create-new").click(function( )
+                    {
+                        jQuery("#secsign-add").hide();
+                        jQuery("#secsign-create").show();
+                    });
+                    
+                    
+                   
+                    
+
+            </script>
+    
+     <div id="secsign-content">
+            
+        
+            <div class="login-form-container">
+                <div class="login-form">
+                    <h2>###secsign.login.heading###</h2>
+
+                    <form id="login-form" method="POST" autocomplete="off">
+                        <input autocomplete="off" type="hidden" name="secsign_method" value="secsign_checkLogin" />
+                        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                        
+                        <div id="login-form-inner">
+                            ###ERROR_MSG###
+                            <div class="login-form-field">
+                                <label class="login-form-field-label">
+                                    ###secsign.login.username.label###
+                                </label>
+                                <div class="login-form-field-input">
+                                    <input required id="input-username" name="secsign_username" type="text">
+                                </div>
+                            </div>
+                            <div class="login-form-field">
+                                <label class="login-form-field-label">
+                                   ###secsign.login.password.label###
+                                </label>
+                                <div class="login-form-field-input login-form-field-password">
+                                    <input required id="input-password" name="secsign_password" type="password">
+                                </div>
+                            </div>
+                      
+
+                            <button class="submit-button">
+                                <span class="submit-button-text">
+                                    ###secsign.login.button.text###
+                                </span>
+                            </button>
+                            
+                            <a target="_blank" href="https://secsign.com">
+                                <div id="footer-image"></div>
+                            </a>
+                        </div>
+
+                        
+
+						
+
+                    </form>
+
+                </div>
+            </div>
+			
+    			
+        </div>        
+    
+    
+    
+<!--###BOTH_DIALOG_TEMPLATE_END###-->      
+   
+</f:cache.disable>

@@ -1,33 +1,68 @@
-# cat=Frontend/frontend/a; sort= a; type=string; label=Service Name:The name of this web site as it shall be displayed on the user's smart phone.
-secsignServicenameFE =
+/////// FRONTEND ///////
 
-# cat=Frontend/frontend/d; type=string; label=Login Redirect:Select the page the user will be redirected to after successfully logging in (e.g. page1/xyz.html).
-secsignLoginRedirectFE =
+###############
+### GENERAL ###
+###############
 
-# cat=Frontend/frontend/e; type=string; label=Logout Redirect:Select the page the user will be redirected to after successfully ending their current session by logging out (e.g. page1/xyz.html).
-secsignLogoutRedirectFE =
+# cat=General; sort= a; type=string; label=Service Name: The service name will be shown in the SecSign App.
+serviceName =
 
-# cat=Frontend/frontend/f; type=boolean; label=Enable Frontend Password Login:Use Typo3 credentials for authentication.
-secsignEnablePwFE = 1
+# cat=General; sort= ab; type=boolean; label=Frontend Activated: SecSign Login activated for Frontend Login.
+feActivated = 1
 
-# cat=Frontend/frontend/g; type=boolean; label=Enable Frontend frame and box-shadow:Change the layout of the SecSign ID frontend login form.
-secsignEnableFrameFE = 1
+# cat=General; sort= ac; type=boolean; label=Backend Activated: SecSign Login activated for Backend Login.
+beActivated = 0
 
-# cat=Frontend/frontend/h; type=boolean; label=Show Greeting:Show/Hide the simple greeting text.
-secsignGreetingEnableFE = 1
+# cat=General; sort= b; type=options[Use username for SecSign ID=username,Use email for SecSign ID (username if no email given)=email,Use pattern for SecSign ID=pattern, Let user choose SecSign ID=free]; label=Automatic creation of SecSign IDs: You can choose how SecSign IDs should be created if a user not yet created one. 
+secsignidCreation = 1
 
-# cat=Frontend/frontend/i; type=boolean; label=Show SecSign ID:Displays SecSign ID instead of Typo3 user name after logging in.
-secsignGreetingNameFE = 1
+# cat=General; sort= c; type=string; label=Pattern for new SecSign IDs (choose 'Use pattern for SecSign ID' above): available variables: %username% for username of user, %email% for email of user
+secsignidPattern = %username%
+
+# cat=General; sort= d; type=options[Add Index to existing ID=index,Let user add an existing ID=existing,Let user create a custom SecSign ID=new,Let user add an existing or create a custom SecSign ID=both,Show error to contact Administrator=error]; label=Behaviour for already existing ID : If an automatic SecSign ID for a user already exists, what should be the solution for the user?
+existingID = 1
+
+# cat=General; sort= f; type=boolean; label=Use Creation-Process with E-Mail confirmation code (mail address for users necessary): By activating this option the creation process will contain a confirmation code that is sent to the mail address of the user. This increases the security, as the user also needs access to the mail address to create the SecSign ID and enter the system. If no mail address is saved, the ID is created without mail confirmation.
+useMailCode=0
+
+###############
+### Layout ###
+###############
+
+# cat=Layout; sort= a; type=string; label=FE-Login Logo: You can show a custom logo above the Login heading on the frontend login.
+feLoginLogo=
+
+# cat=Layout; sort= b; type=string; label=Login Heading Text: You can change the heading of the login. Default: Login
+feHeadingText=
+
+# cat=Layout; sort= c; type=color; label=Heading color: You can change the color of the login heading. Default: #333333
+feHeadingColor=
+
+# cat=Layout; sort= d; type=color; label=Label color: You can change the color of the labels for username and password. Default: #6B778C
+feLabelColor=
+
+# cat=Layout; sort= d; type=color; label=Button color: You can change the color of the buttons on the login. Default: #DDDDDD
+feButtonColor=
+
+# cat=Layout; sort= d; type=color; label=Button text color: You can change the color of the text on the buttons. Default: #000000
+feButtonText=
+
+###############
+### SERVER ###
+###############
+# cat=Server; sort= a; type=string; label=Server URL: The url of the SecSign ID Server to use for authentication. Leave empty for SecSign Cloud-Server.
+serverURL =
+
+# cat=Server;  sort= b; type=string; label=PinAccount User: The user to access the SecSign ID Server. Leave empty for default PinAccount
+pinAccountUser =
+
+# cat=Server; sort= c; type=string; label=PinAccount Password: The password for the user to access the SecSign ID Server. Leave empty for default PinAccount
+pinAccountPassword =
 
 
-# cat=backend; type=boolean; label=Enable SecSign ID backend login:Use SecSign ID for backend authentication. JavaScript needs to be enabled in your browser.
-secsignEnableBE =
+###############
+### SUPPORT ###
+###############
 
-# cat=backend; type=boolean; label=Disable Typo3 password login:If the SecSign ID backend authentication is enabled, you can disable the backend login via Typo3 passwords. Users without a valid SecSign ID are not able to login anymore.
-secsignDisableBEPW =
-
-# cat=backend; type=boolean; label=Help:Displays the Help page under Admin Tools - Secsign ID. Reload backend after change.
-secsignHelpEnableBE = 1
-
-# cat=backend; type=boolean; label=Syslog:Writes all backend login errors to the syslog.
-secsignsyslog = 1
+# cat=Support; sort= a; type=boolean; label=DEBUG logging: Activating this option will activate DEBUG logging for the system.
+debugLogging = 0

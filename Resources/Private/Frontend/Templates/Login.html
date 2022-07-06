@@ -1,0 +1,79 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+     
+    <!--###TEMPLATE_LOGIN###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <link rel="stylesheet" href="/typo3conf/ext/secsign/Resources/Public/css/secsignid_layout.css"/>
+        
+        <script  type="text/javascript">
+            jQuery(document).ready(function (event) {
+               
+            });
+            
+        </script>
+    </f:section >
+       
+   
+        
+
+        <div id="secsign-content">
+            
+        
+            <div class="login-form-container">
+                <div class="login-form">
+                    ###login_logo###
+                    <h2 style="color:###headingColor###">###secsign.login.heading###</h2>
+
+                    <form id="login-form" method="POST">
+                        <input type="hidden" name="secsign_method" value="secsign_checkLogin" />
+                        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                        <div id="login-form-inner">
+                            ###ERROR_MSG###
+                            <div class="login-form-field">
+                                <label class="login-form-field-label" style="color:###labelColor###">
+                                    ###secsign.login.username.label###
+                                </label>
+                                <div class="login-form-field-input">
+                                    <input required id="input-username" name="secsign_username" type="text">
+                                </div>
+                            </div>
+                            <div class="login-form-field">
+                                <label class="login-form-field-label" style="color:###labelColor###">
+                                   ###secsign.login.password.label###
+                                </label>
+                                <div class="login-form-field-input login-form-field-password">
+                                    <input required id="input-password" name="secsign_password" type="password">
+                                </div>
+                            </div>
+                      
+
+                            <button class="submit-button" style="background:###buttonColor###">
+                                <span class="submit-button-text" style="color:###buttonTextColor###">
+                                    ###secsign.login.button.text###
+                                </span>
+                            </button>
+                            
+                            <a target="_blank" href="https://secsign.com">
+                                <div id="footer-image"></div>
+                            </a>
+                        </div>
+
+                        
+
+						
+
+                    </form>
+
+                </div>
+            </div>
+			
+    			
+        </div>
+    
+        
+   
+    
+    <!--###TEMPLATE_LOGIN###-->
+
+   </f:cache.disable>

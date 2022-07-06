@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'SecSignID',
-	'description' => 'This extension allows users to authenticate using smart phone running SecSign App.',
+	'description' => 'This extension allows users to authenticate using 2FA by SecSign ID, FIDO, TOTP or MailOTP.',
 	'category' => 'plugin',
 	'author' => 'SecSign Technologies Inc.',
 	'author_email' => 'support@secsign.com',
@@ -21,10 +21,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
-	'version' => '1.2.1',
+	'version' => '2.0.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.0.0-7.6.99',
+			'typo3' => '8.0.0-10.9.99'
 		),
 		'conflicts' => array(
 		),

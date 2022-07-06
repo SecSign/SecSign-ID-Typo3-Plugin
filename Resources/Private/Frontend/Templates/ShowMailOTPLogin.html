@@ -1,0 +1,111 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+     
+    <!--###MAILOTP_LOGIN_TEMPLATE###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <link rel="stylesheet" href="/typo3conf/ext/secsign/Resources/Public/css/secsignid_layout.css"/>
+        
+        <script  type="text/javascript">
+            jQuery(document).ready(function (event) {
+               
+            });
+            
+        </script>
+    </f:section >
+       
+   
+        
+
+        <div id="secsign-content">
+            
+        
+            <div class="login-form-container">
+                <div class="login-form">
+                    <h2>###secsign.login.mailotp.heading###</h2>
+
+                    <form id="login-form" method="POST">
+                        <input type="hidden" name="secsign_method" value="secsign_checkMailOTP" />
+                        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                        <input type="hidden" name="secsigniduserid" value="###secsignid###" />
+                        <input type="hidden" name="secsign_username" value="###secsign_username###" />
+                        <h4>###secsign.login.mailotp.text###</h4>
+                        <center><h5>###secsignid###</h5></center>
+                        <div id="login-form-inner">
+                            ###ERROR_MSG###
+                            <div class="login-form-field">
+                                <label class="login-form-field-label">
+                                    ###secsign.login.mailotp.code.label###
+                                </label>
+                                <div class="login-form-field-input">
+                                    <input required id="input-totp" name="secsign_mailotp" type="text">
+                                </div>
+                            </div>
+                            
+                      
+
+                            <button class="submit-button">
+                                <span class="submit-button-text">
+                                    ###secsign.login.button.text###
+                                </span>
+                            </button>
+                            
+                            <a target="_blank" href="https://secsign.com">
+                                <div id="footer-image"></div>
+                            </a>
+                        </div>
+
+                        
+
+						
+
+                    </form>
+
+                </div>
+            </div>
+			
+    			
+        </div>
+    
+        
+   
+    
+    <!--###MAILOTP_LOGIN_TEMPLATE###-->
+    <!--###TEMPLATE_SWITCH_METHOD_MAILOTP###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script>
+            jQuery(document).ready(function (event) {
+                
+                $("#secsignid-switch-link").insertAfter($(".login-form-field"));
+                $("#login-form").append("<input type='hidden' name='secsignidswitchallowed' value='true'/>");
+                $("#change").click(function ()
+                {
+                    $("#secsignid-switch-form").submit();
+                });
+            });
+            
+            
+        </script>
+    </f:section >
+    <form style="display:none" class="login-form" name="accesspassAuthSecsign" method="post" id="secsignid-switch-form">
+        <input type="hidden" name="secsign_method" value="secsign_changeMethod"/>
+        
+        <input type="hidden" name="secsign_changeFrom" value="mailotp"/>
+        
+        <input type="hidden" name="secsigniduserid" value="###secsignid###"/>
+        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+        <input type="hidden" name="secsign_username" value="###secsign_username###" />
+       
+        
+
+    </form>
+    <center id="secsignid-switch-link">
+            <a id="change" class="link">
+                Switch Method
+            </a>
+    </center>
+    
+    <!--###TEMPLATE_SWITCH_METHOD_MAILOTP###-->
+
+   </f:cache.disable>

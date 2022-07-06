@@ -1,0 +1,52 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+     
+    <!--###TEMPLATE_LOGOUT###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <link rel="stylesheet" href="/typo3conf/ext/secsign/Resources/Public/css/secsignid_layout.css"/>
+    </f:section >
+
+    
+    <div id="secsign-content">
+        <div class="login-form-container">
+            <div class="login-form">
+
+                <form id="login-form" target="_top" method="post">
+                    <div id="login-form-inner">
+                        
+                        <div id="secsign-logout">
+                            <label>###secsign.login.username.label###</label>
+                            ###USERNAME###
+                        </div>
+                        
+                        <div class="felogin-hidden">
+                            <input type="hidden" name="logintype" value="logout" />
+                        </div>
+                        
+                        <input class="submit-button submit-button-text" name="Logout" type="submit" value="###secsign.button.logout###" />
+                            
+
+                        <a target="_blank" href="https://secsign.com">
+                            <div id="footer-image"></div>
+                        </a>
+                    </div>
+
+
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+    
+
+    <!--###TEMPLATE_LOGOUT###-->
+    
+    
+
+   </f:cache.disable>

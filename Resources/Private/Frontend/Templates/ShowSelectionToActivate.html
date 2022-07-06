@@ -1,0 +1,186 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+     
+<!--###SELECT_TO_TEMPLATE_START###-->
+    <f:section name="HeaderAssets">
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <script type="text/javascript" src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+            <link rel="stylesheet" href="/typo3conf/ext/secsign/Resources/Public/css/secsignid_layout.css"/>
+            <div id="dialog" title="Basic dialog">
+                <div id="content">
+                    <div class="login-form-container ">
+                        <div class="login-form">
+                            <h1 id="title">###secsignid.login.methodselect.default.title###</h1>
+                            <p id="description">###secsignid.login.methodselect.default.subtitle###</p>
+
+                            <form id="selection-form" method="POST">
+                                <input id="selected-method" type="hidden" name="selected-method" value="none">
+                                <input type="hidden" name="secsign_method" value="secsign_change_to">
+                                <input type="hidden" name="secsign_username" value="###secsign_username###">
+                                <input type="hidden" name="toConfirm" value="###toConfirm###">
+                                <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+
+                                <div >
+                                    <div id="dialog-select">
+                                        <div class="column">
+<!--###SELECT_TO_TEMPLATE_START###-->
+<!--###SELECT_TO_TEMPLATE_SECSIGNID###-->
+                                            <div id="method-active-id" class="column method-item selectable-item">
+                                                <h1>###secsignid.login.methodselect.id.title###</h1>
+                                                <p>###secsignid.login.methodselect.id.description###</p>
+                                            </div>
+<!--###SELECT_TO_TEMPLATE_SECSIGNID###-->
+<!--###SELECT_TO_TEMPLATE_FIDO###-->
+                                            <div id="method-active-fido" class="column method-item selectable-item">
+                                                <h1>###secsignid.login.methodselect.fido.title###</h1>
+                                                <p>###secsignid.login.methodselect.fido.description###</p>
+                                            </div>
+<!--###SELECT_TO_TEMPLATE_FIDO###-->
+<!--###SELECT_TO_TEMPLATE_TOTP###-->
+                                            <div id="method-active-totp" class="column method-item selectable-item">
+                                                <h1>###secsignid.login.methodselect.totp.title###</h1>
+                                                <p>###secsignid.login.methodselect.totp.description###</p>
+                                            </div>
+<!--###SELECT_TO_TEMPLATE_TOTP###-->
+<!--###SELECT_TO_TEMPLATE_MAILOTP###-->
+                                            <div id="method-active-mail-otp" class="column method-item selectable-item">
+                                                <h1>###secsignid.login.methodselect.mail.title###</h1>
+                                                <p>###secsignid.login.methodselect.mail.description###</p>
+                                            </div>
+<!--###SELECT_TO_TEMPLATE_MAILOTP###-->
+<!--###SELECT_TO_TEMPLATE_NEW###-->
+                                            <div id="method-active-new" class="column method-item selectable-item">
+                                                <h1>###secsignid.login.methodselect.new.title###</h1>
+                                                <p>###secsignid.login.methodselect.new.description###</p>
+                                            </div>
+<!--###SELECT_TO_TEMPLATE_NEW###-->
+<!--###SELECT_TO_TEMPLATE_END###-->
+                                        </div>    
+                                       
+                                    </div>
+
+                                    
+
+                                   
+                                </div>
+                            </form>
+                            <form id="back-form" method="POST">
+                                <input type="hidden" name="secsign_method" value="secsign_back_from_change_to">
+                                <input type="hidden" name="secsign_username" value="###secsign_username###">
+                                <input type="hidden" name="toConfirm" value="###toConfirm###">
+                                <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                                <div class="button-container">
+                                    <button id="button-inactive-back"
+                                        class="submit-button submit-button-small submit-button-cancel">
+                                        <span
+                                            class="submit-button-text">###secsign.button.cancel###</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <script>
+
+                    jQuery("#dialog").dialog({
+                        appendTo: "body",
+                        dialogClass: "no-close no-bar",
+                        draggable: false,
+                    });
+                    
+                    
+                    $("#method-active-id").click(function()
+                    {
+                        $("#selected-method").val('secsignid');
+                        $("#selection-form").submit();
+                    });
+                    $("#method-active-fido").click(function()
+                    {
+                        $("#selected-method").val('fido');
+                        $("#selection-form").submit();
+                    });
+                    $("#method-active-totp").click(function()
+                    {
+                        $("#selected-method").val('totp');
+                        $("#selection-form").submit();
+                    });
+                    $("#method-active-mail-otp").click(function()
+                    {
+                        $("#selected-method").val('mailotp');
+                        $("#selection-form").submit();
+                    });
+                    
+                    $("#method-active-new").click(function()
+                    {
+                        $("#selected-method").val('new');
+                        $("#selection-form").submit();
+                    });
+                    
+
+            </script>
+    </f:section >
+    
+     <div id="secsign-content">
+            
+        
+            <div class="login-form-container">
+                <div class="login-form">
+                    <h2>###secsign.login.heading###</h2>
+
+                    <form id="login-form" method="POST" autocomplete="off">
+                        <input autocomplete="off" type="hidden" name="secsign_method" value="secsign_checkLogin" />
+                        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                        
+                        <div id="login-form-inner">
+                            ###ERROR_MSG###
+                            <div class="login-form-field">
+                                <label class="login-form-field-label">
+                                    ###secsign.login.username.label###
+                                </label>
+                                <div class="login-form-field-input">
+                                    <input required id="input-username" name="secsign_username" type="text">
+                                </div>
+                            </div>
+                            <div class="login-form-field">
+                                <label class="login-form-field-label">
+                                   ###secsign.login.password.label###
+                                </label>
+                                <div class="login-form-field-input login-form-field-password">
+                                    <input required id="input-password" name="secsign_password" type="password">
+                                </div>
+                            </div>
+                      
+
+                            <button class="submit-button">
+                                <span class="submit-button-text">
+                                    ###secsign.login.button.text###
+                                </span>
+                            </button>
+                            
+                            <a target="_blank" href="https://secsign.com">
+                                <div id="footer-image"></div>
+                            </a>
+                        </div>
+
+                        
+
+						
+
+                    </form>
+
+                </div>
+            </div>
+			
+    			
+        </div>        
+
+    
+<!--###SELECT_TO_TEMPLATE_END###-->
+    
+    
+
+   </f:cache.disable>

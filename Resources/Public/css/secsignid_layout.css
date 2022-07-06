@@ -1,411 +1,1217 @@
-/**
 
-// $Id: secsignid_layout.css,v 1.4 2015/04/09 16:41:39 titus Exp $
+/*!
+ * SecSign ID JIRA Plugin Cascading Style Sheet
+ *
+ * (c) copyright 2015-2018, SecSign Technologies Inc.
+ */
 
-*/
+#secsignid-options-wrapper,
+#secsignid-users-wrapper {
+	width:100%;
+	position:relative;
+	float:left;
+}
 
+.secsignid-leftcolumn,
+.secsignid-rightcolumn {
+	width:20%;
+	float:left;
+	position:relative;
+	display:block;
+	clear:none;
+}
+
+.secsignid-rightcolumn {
+	width:30%;
+	margin-left:4%;
+}
+
+input[type=checkbox].pwd-allowed {
+	width:15px;
+	margin:0;
+	margin-right:10px;
+	margin-top:9px;
+	margin-right:10px;
+	float:left;
+}
+
+.secsignid-label {
+	text-indent:10px;
+	min-height:20px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.secsignid-label.value {
+	line-height:25px;
+	height:25px;
+	border-radius:3px;
+	border:solid 1px rgba(100, 100, 100, 0.3);
+	background-color:rgba(100, 100, 100, 0.1);
+}
+
+.secsignid-label.description {
+	width:76%;
+	margin-left:24%;
+	color: #707070;
+  	font-size: 12px;
+	line-height:25px;
+	height:25px;
+	clear:both;
+	text-indent:0px;
+}
+
+.secsignid-label.groupname {
+	font-size:12pt;
+	font-weight:bold;
+	width:100%;
+	text-align:center;
+	height:30px;
+}
+
+#choice0Content,
+#choice1Content,
+#choice2Content,
+#choice3Content
+{
+	margin-left:40px;
+}
+.secsignid-label.pages {
+	width:100%;
+	white-space:normal;
+}
+
+.secsignid-lb {
+	position:relative;
+	display:block;
+	float:left;
+	clear:both;
+	width:100%;
+	min-height:25px;
+	margin-bottom:5px;
+}
+
+.secsignid-cl {
+	position:relative;
+	clear:both;
+	width:100%;
+	height:10px;
+}
+
+.secsignid-cl.x2 {
+	height:25px;
+}
+
+.secsignid-cl.x4 {
+	height:50px;
+}
+
+.secsignid-button {
+	/*background-color:#599fcb;*/
+
+
+	/*background-color: #0089d1;*/
+  	transition-property: background-color;
+  	/*background-color: #3572b0;*/
+  	transition-property: all;
+  	transition-duration: 300ms;
+  	transition-timing-function: linear;
+  	transition-delay: 0s;
+
+	min-width:100px;
+
+	/*color:#fff;
+	border-radius:3px;
+	width:150px;
+	height:30px;
+
+	border:none;
+	outline:none;
+	font-weight:bold;
+	font-size:10pt;*/
+}
 
 /*
-Blue: #599fcb
-
+    best would be to inherit the background color of 	.aui-button.aui-button-primary;
+    in case the admin will change the color of its jira system...
 */
-
-/*T3*/
-
-#t3-login-interface-section{
-    margin: 0 0 20px 0;
+.secsignid-button:hover,
+.secsignid-button.blue {
+	background-color: #3572b0;
+	color:#fff;
+	cursor:pointer;
 }
 
-#secsignidplugin #secsignid-page-pw, #secsignidplugin #secsignid-page-info, #secsignidplugin #secsignid-page-accesspass, #secsignidplugin #secsignid-page-question {
-    display: none;
+.secsignid-button.aui-button-primary:hover {
+	background-color: #68C3FC;
 }
 
-#secsignidplugin, noscript {
-    background-color: #fff;
-    max-width: 400px;
-    min-width: 100px;
-    padding: 30px;
-    margin: 0px auto 30px auto;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.28);
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    font-size: 15px;
+.secsignid-button:focus,
+.secsignid-button:active,
+.secsignid-button::-moz-focus-inner {
+	outline:none;
+	border:none;
+}
+
+.secsign-logo-small {
+	background:  url("images/secsign-logo.png") no-repeat;
+	background-size:40px;
+	width:40px;
+	height:40px;
+	float:left;
+	display:inline;
+	margin-right:10px;
+}
+
+.secsign-logo-adduser.grey {
+	background: url("images/secsign-logo-grey.png") no-repeat left;
+    background-size: 15px;
+    width:25px;
+	height:15px;
+	position:relative;
+	display:inline;
+	clear:none;
+}
+
+/*
+.secsignid-button.aui-button-primary:before {
+	content: "";
     display: block;
-}
-
-#secsignidplugin p, #secsignidplugin li {
-    color: rgb(52, 52, 52);
-    font-size: 15px;
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    text-decoration: none;
-    background-image: none;
-    box-shadow: none;
-    text-shadow:none;
-    border: none;
-    outline: none;
-}
-
-#secsignidplugin label, #secsignidplugincontainer p{
-    color: #000;
-}
-
-#secsignidplugin .secsignidlogo, noscript .secsignidlogo {
-    background: url(../images/secsignidlogo.png) no-repeat top left;
-    width: 170px;
-    height: 65px;
-    margin-bottom: 30px;
-}
-
-#secsignidplugin #login-secsignid, #secsignidplugin #login-pw, #secsignidplugin #login-user, #secsignidplugin #wp-username, #secsignidplugin #wp-password, #secsignidplugin #user_login, #secsignidplugin #user_pass {
-    font-size: 15px;
-    height: 40px;
-    color: #34495e;
-    border: 2px solid #599fcb;
-    border-radius: 6px;
-    display: block;
-    width: 100%;
-    padding: 4px 12px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #ffffff url('../images/secsign16x16.png') no-repeat 98% center;
-    background-size: 20px;
-    -webkit-appearance: textfield;
-    outline: none;
-}
-
-#secsignidplugin #login-user, #secsignidplugin #login-pw{
-    margin: 20px 0;
-}
-
-#secsignidplugin #login-pw, #secsignidplugin #login-user, #secsignidplugin #wp-username, #secsignidplugin #wp-password, #secsignidplugin #user_login, #secsignidplugin #user_pass {
-    background: none;
-}
-
-#secsignidplugin #headinginfo, #secsignidplugin #headingquestion{
-    font-size: 18px;
-    line-height: 20px;
-    padding: 10px 0 0 65px;
-    margin: 0 0 20px 0;
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    color: rgb(52, 52, 52);
-}
-
-#noscriptbtn, #secsignidplugin #secloginbtn, #secsignidplugin #seclogoutbtn, #secsignidplugin #pwdloginbtn, #secsignidplugin #secsignidapp1, #secsignidplugin #secsignidapp2, #secsignidplugin #wp-submit, #secsignidplugin #t3-login-submit {
-    padding: 0;
-    margin: 0;
-    display: block;
-    line-height: 40px;
-    text-align: center;
-    width: 100%;
-    min-height: 40px;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: #0089d1;
-    -webkit-transition: background-color 300ms linear;
-    -moz-transition: background-color 300ms linear;
-    -o-transition: background-color 300ms linear;
-    -ms-transition: background-color 300ms linear;
-    transition: background-color 300ms linear;
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    font-weight: bolder;
-    text-decoration: none;
-    background-image: none;
-    box-shadow: none;
-    text-shadow:none;
-    border: none;
-    outline: none;
-}
-
-#secsignidplugin #secsignid-cancelbutton{
-    padding: 0;
-    margin: 0;
-    display: block;
-    line-height: 40px;
-    text-align: center;
-    width: 100%;
-    min-height: 40px;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: rgb(200, 200, 200);
-    -webkit-transition: background-color 300ms linear;
-    -moz-transition: background-color 300ms linear;
-    -o-transition: background-color 300ms linear;
-    -ms-transition: background-color 300ms linear;
-    transition: background-color 300ms linear;
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    font-weight: bolder;
-    text-decoration: none;
-    background-image: none;
-    box-shadow: none;
-    text-shadow:none;
-    border: none;
-    outline: none;
-}
-
-#secsignidplugin #secsignid-cancelbutton:hover{
-    background-color: rgb(161, 161, 161);
-}
-
-#noscriptbtn, #secsignidplugin #secloginbtn:hover, #secsignidplugin #seclogoutbtn:hover, #secsignidplugin #pwdloginbtn:hover, #secsignidplugin #secsignidapp1:hover, #secsignidplugin #secsignidapp2:hover, #secsignidplugin #wp-submit:hover {
-    background-color: #599fcb;
-}
-
-#secsignidplugin .form-group {
-    position: relative;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-}
-
-#secsignidplugin div > span > input[type='radio'],
-#secsignidplugin div > span > input[type='checkbox'] {
-    opacity: 0;
-    float: left;
+    clear:none;
+    background: url("secsign-logo-grey.png") no-repeat;
+    background-size:20px;
     width: 20px;
-    position: absolute;
-    z-index: -99;
+    height: 20px;
 }
 
-#secsignidplugin div > span > input[type='radio'] + label,
-#secsignidplugin div > span > input[type='checkbox'] + label {
-    margin: 0;
-    clear: none;
-    padding: 3px 0 3px 32px;
-    line-height: 20px;
-    cursor: pointer;
-    background: url(../images/checkbox.png) left top no-repeat;
-    font-size: 15px;
-    font-weight:normal;
+.secsignid-button.aui-button-primary:hover:before {
+	display:block;
+}*/
+
+.secsignid-button.grey {
+	background-color: #c8c8c8;
 }
 
-#secsignidplugin div > span > input[type='checkbox']:checked + label {
-    background: url(../images/checkbox.png) left -33px no-repeat;
+.secsignid-button.grey:hover {
+	background-color: #a1a1a1;
+	cursor:pointer;
 }
 
-#secsignidplugin #secsignid-checkbox {
-    margin: 20px 0;
+.secsignid-wrapper {
+	border-bottom:1px solid rgba(100, 100, 100, 0.4);
+	overflow:hidden;
+	width:100%;
 }
 
-#secsignidplugin .linktext {
-    float: right;
-    color: #bdc3c7;
-    text-decoration: none;
-    line-height: 25px;
+.secsignid-wrapper.no-border {
+	border-bottom:none;
 }
 
-#secsignidplugin .linktext:hover {
-    color: #599fcb;
+.secsignid-wrapper h1 {
+	margin-bottom: 30px;
 }
 
-#secsignidplugin #secsignid-info-secsignid, #secsignidplugin #secsignid-learnmore, #secsignidplugin #secsignid-pw, #secsignidplugin #secsignid-login-secsignid, #secsignidplugin #secsignid-question-secsignid{
-    background-color: transparent;
-    font-size: 15px;
-    font-weight: normal;
-    color: #bdc3c7;
-    text-decoration: none;
+.secsignid-wrapper h2,
+.secsignid-wrapper h3 {
+	margin-bottom:20px;
 }
 
-#secsignidplugin #secsignid-info-secsignid:hover, #secsignidplugin #secsignid-learnmore:hover, #secsignidplugin #secsignid-pw:hover, #secsignidplugin #secsignid-login-secsignid:hover, #secsignidplugin #secsignid-question-secsignid:hover{
-    color: #599fcb;
-    text-decoration: none;
+form.aui .text.anim,
+input.anim {
+	transition-property: all;
+  	transition-duration: 300ms;
+  	transition-timing-function: linear;
+  	transition-delay: 0s;
 }
 
-#secsignidplugin #secsignid-info-secsignid, #secsignidplugin #secsignid-question-secsignid{
-    float: none;
-    display: block;
-    text-align: center;
-    margin: 20px 0;
+form.aui .text.secsign-error,
+input.secsign-error {
+	background-color:#FFE1DE;
+	border:solid 1px #CC0000;
+	border-radius:3px;
 }
 
-#secsignidplugin #secsignid-login-secsignid{
-    float: none;
-    display: block;
-    text-align: center;
+.secsign-empty,
+.secsign-error-dot {
+	color:#A60A0A;
+	font-size:14pt;
+	margin-left:10px;
+	width:10px;
+	display:block;
+	float:left;
 }
 
-#secsignidplugin .secsignid-login-footer {
-    margin: 20px 0 0 0;
+#secsignid {
+	position:relative;
+	width:100%;
+	margin:10px 0px;
+	height:35px;
+
+	padding:1% 2%;
+	height: 40px;
+  	color: #34495e;
+  	text-indent:5px;
+  	font-size:10pt;
+	font-weight:bold;
 }
 
-#secsignidplugin .clear {
-    clear: both;
+.secsign-ip-list-element {
+	margin:0;
+	padding:0;
+	height:38px;
+	border-style: none none dotted none;
+	border-width: 0 0 1px 0;
 }
 
-#secsignidplugin .secsignidlogo-left {
-    width: 55px;
-    height: 65px;
+.secsign-ip-list-element:last-child {
+    border:none;
+}
+
+#secsign-ip-list{
+	list-style-type:none;
+	list-style-position: inside;
+	margin:1em 0 0 0;
+	padding:0;
+	text-indent:0;
+}
+
+#ip-delete{
+	float:right;
+	width:100px;
+	margin:4px 0 4px 0;
+}
+
+#ip-element
+{
+	width:auto;
+	overflow:hidden;
+	margin:4px 10px 4px 10px;
+	font-size:13pt;
+	float:left;
+	color: #000000;
+}
+
+.whitelist-element
+{
+	overflow:hidden;
+	font-size:13pt;
+	color: #000000;
+}
+
+#secsignid.aui-dialog {
+	height:25px;
+	padding:0;
+	width:98%;
+}
+
+.option-column.first{
+	width:50%;
+	float:left;
+}
+
+.option-column.second{
+	width:50%;
+	float:left;
+    margin-bottom: 20px;
+}
+
+.option-column * {
+    padding: 5px 10px;
+}
+
+.option-column > center > label,
+.further > center > label,
+.option-column.second > center > label
+{
+	font-size:20px;
+}
+
+.further{
+	margin-bottom:20px;
+}
+
+.aui-message.secsign-red {
+    border:solid 1px #660000;
+}
+
+.aui-message.info.secsign-red::before {
+    background-color:#660000;
+}
+
+.aui-message.secsign-red p {
+    color:#990000;
+}
+
+
+
+
+
+
+.secopt_header {
+    position: relative;
     float: left;
+    width: 18%;
+    color: #7b7b7b;
+    font-size: 17px;
+	text-align: right;
 }
 
-#secsignidplugin #secsignid-learnmore{
-    display: block;
+.secopt_main{
+	position: relative;
+    width: 82%;
+    float: left;
+	padding-top: 3px;
+}
+
+.secopt_checkspace {
+    position: relative;
+    width: 75px;
+    float: left;
     text-align: center;
-    text-decoration: none;
-    color: #599fcb;
-    font-weight: bolder;
-    margin: 20px 0;
 }
 
-/* Accesspass */
-#secsignidplugin #secsignid-accesspass-img{
-    width: 88px;
-    min-height: 88px;
-    margin: 0 auto;
-    padding-top: 105px;
-    opacity: 0.6;
-    display: block;
-    border: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+.secopt_desc {
+    position: relative;
+    margin-left:15px;
 }
 
-#secsignidplugin #secsignid-accesspass-info{
-    margin: 20px 0;
+.secopt_desc label{
+	font-weight: bold;
+	display: block;
+	margin-bottom: 10px;
 }
 
-#secsignidplugin .accesspass-id{
+.secopt_desc p{
+	margin: 5px 0 0 0;
+}
+
+label aui-toggle{
+	margin-right: 10px;
+}
+
+.secopt_spacer{
+	height: 30px;
+	clear: both;
+}
+
+.secopt_divider {
+    margin: 40px 0;
+    clear: both;
+    border: 0;
+    height: 1px;
+    background-color: #d2d2d2;
+}
+
+#secopt_color{
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	background-color: #ffffff;
+	margin: 0px 5px;
+	box-sizing: border-box;
+	vertical-align: bottom;
+	border-radius: 3px;
+	border: 1px solid #d1d1d1;
+}
+
+.secsignid-wrapper {
+    border-bottom: none;
+}
+
+#ipRangeOption{
+	padding-top: 30px;
+}
+
+#secopt_box {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #cecece;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+#secopt_boximg {
+    background: url("images/secsign2fa.jpg") no-repeat center center;
+    background-size: contain;
+    width: 50%;
+    height: 250px;
+	float: left;
+}
+
+#secopt_boxcontent {
+    padding: 20px;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+	overflow: auto;
+}
+
+#secopt_boxintro {
+   margin: 10px 20px 10px 20px;
+   width: auto;
+}
+
+#tutorial_step {
+   float:left;
+   width:100%;
+}
+
+#tutorial_step h3 strong {
     display: inline-block;
-    float: right;
-    line-height: 25px;
-    padding: 0;
-    margin: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #00c0d3;
+    text-align: center;
+    border-radius: 30px;
+    line-height: 20px;
+    color: #fff;
+    margin: 0 10px 0 0;
 }
 
-#secsignidplugin ol{
-    margin-left: 20px;
+.tutorial-description{
+    white-space: normal;
+    line-height: 20px;
+    text-indent: 0px;
+    margin-left: 30px;
+    margin-right:30px;
 }
-
-/* BUTTONS */
-
-#secsignidplugin .infobutton{
-    text-indent: -9999px;
-    height: 25px;
-    width: 24px;
+#secopt_boxcontent h3 strong {
     display: inline-block;
-    -webkit-transition-property: none;
-    transition-property: none;
-    -webkit-transition-duration: 0s;
-    transition-duration: 0s;
-    -webkit-transition-timing-function: none;
-    transition-timing-function: none;
+    width: 20px;
+    height: 20px;
+    background-color: #00c0d3;
+    text-align: center;
+    border-radius: 30px;
+    line-height: 20px;
+    color: #fff;
+    margin: 0 10px 0 -20px;
 }
 
-#secsignidplugin #secsignid-questionbutton {
-    background: url(../images/icons.png) right top no-repeat;
+div#secopt_boxcontent p {
+    color: #707070;
+    font-size: 12px;
+    line-height: 1.66666666666667;
+    margin: 5px 0 0 10px;
 }
 
-#secsignidplugin #secsignid-questionbutton:hover {
-    background: url(../images/icons.png) right bottom no-repeat;
+div#secopt_boxcontent h3 {
+    margin: 0px;
 }
 
-#secsignidplugin #secsignid-infobutton {
-    background: url(../images/icons.png) left top no-repeat;
-}
-
-#secsignidplugin #secsignid-infobutton:hover {
-    background: url(../images/icons.png) left bottom no-repeat;
-}
-
-#secsignidplugin #secsignid-accesspass-container{
-    width: 200px;
-    display: block;
-    margin: 0 auto;
-    height: 235px;
-    background: url(../images/accesspass_bg.png) no-repeat top right;
-    background-size: 180px;
-}
-
-#secsignidplugin #secsignid-error, #secsignidplugin #secsignid-reg-error, #secsignidplugin #secsign-error-typo3 {
-    margin: 30px 0;
+.secopt_groupbox{
+	display: none;
+    border: 1px solid #ededed;
     padding: 10px;
-    background-color: rgba(255, 229, 229, 1);
-    border-radius: 5px;
-    border: 2px solid rgba(253, 152, 152, 1);
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.secsignid-label.groupname {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    height: auto;
+    background-color: #ededed;
+    line-height: 30px;
+    border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.pattern-options
+{
+	padding-left:250px;
+	margin-bottom:5px;
+	margin-top:10px;
+}
+
+.userpattern{
+	margin-left:-250px;
+	width:230px;
+	text-align:right;
+	display:inline-block;
+	margin-right:5px;
+}
+
+#secopt_mappingcontainer{
+	margin: 20px 0;
+}
+
+.secopt_usercol{
+	width: 42%;
+	float: left;
+}
+
+.secopt_idcol{
+	width: 42%;
+	float: left;
+}
+
+.secopt_pwcol{
+	width: 16%;
+	float: left;
+}
+
+.secopt_openclose{
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	right: 0;
+	display: inline-block;
+	margin: 10px;
+	background: url("images/secsign-openclose.png") no-repeat;
+	background-size: contain;
+	transform: rotate(45deg);
+	-moz-transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.secopt_opengroup .secopt_openclose{
+	transform: rotate(0deg);
+}
+
+span#secopt_versiontag {
+    background-color: #4077b4;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font-size: 12px;
+    color: #fff;
+}
+
+span#secopt_mapping {
+    background-color: #4077b4;
+    border-radius: 3px;
+    padding: 1px 3px;
+    color: #fff;
+}
+
+.thumbnailimage {
+    border: 1px solid #ddd; 
+    border-radius: 4px;  
+    padding: 5px;
+	margin: 5px;
+}
+
+.thumbnailimage:hover{
+	box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.helpbutton{
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	background: url("images/about.png") no-repeat;
+	background-size: contain;
+	margin:0px 10px 0 10px;
+}
+
+.dropheading {
+    background: url("images/plus.png") left top no-repeat;
+    background-position: 0px 4px;
+    display: inline-block;
+    padding-left: 20px;
+	font-weight: bold;
+	font-size:16px;
+	height:30px;
+	width:100%;
+}
+
+.dropheading.selectedelem,
+.dropheading.selectedelemSub,
+.dropheading.fixselectedelem,
+.dropheading.fixselectedelemSub  {
+    background: url("images/minus.png") left top no-repeat;
+	background-position: 0px 5px;
+}
+
+
+
+
+
+.hline {
+    padding-bottom: 10px;
+	margin: 0px -5px 0px -5px;
+    border-bottom: 2px solid rgba(190, 190, 190, 0.4); /* whichever color you prefer */
+	clear:both;
+}
+
+.create_heading{
+    font-size: 20px;
+    line-height: 1.5;
+	margin-left:10px;
+	margin-top:10px;
+}
+
+.create_description{
+	font-size: 14px;
+    color: #333333;
+	padding-top:5px;
+}
+
+.secsign-appbtnicon, .secsign-appbtnicon::before, .secsign-appbtnicon::after,
+.secsign-appbtncontainer, .secsign-appbtncontainer::before, .secsign-appbtncontainer::after,
+.secsign-appbtn, .secsign-appbtn::before, .secsign-appbtn::after {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+  }
+
+.secsign-appbtn
+{
+	width: 48%;
+	line-height: 34px;
+	background-color: #505050;
+	border-radius: 3px;
+	color: #fff !important;
+	padding: 3px;
+	margin: 2% 0;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.secsign-appbtn:hover
+{
+	color: #fff;
+	background-color: #0191d7;
+}
+
+.secsign-appbtnicon
+{
+	width: 32px;
+	height: 32px;
+	fill: white;
+	padding: 5px 6px;
+	float: left;
+}
+
+
+
+.secsign-appbtncontainer{
+	max-width:90%;
+	margin: 20px 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.secsign-appbtncontainer-tutorial{
+	max-width:600px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+  
+.secsign-attention
+{
+	background:  url("images/attention.png") no-repeat;
+}
+
+.customlight .secsign-attention
+{
+	background:  url("images/attention.png") no-repeat;
+	filter: invert(100%);
+}
+
+
+.secsignid-cl {
+	position:relative;
+	float:left;
+	clear:both;
+	width:100%;
+	height:10px;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+#secsign-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#secsign-header-image-fake {
     display: none;
-    color: #000;
+    background: url("login-logo.png");
 }
 
-#secsignidplugin #secsignid-reg-error, #secsignidplugin #secsign-error-typo3{
-    display: block;
+#secsign-header-image {
+    width: 238px;
+    margin-top: 60px;
+    margin-bottom: 45px;
 }
 
-/* Responsive */
-
-
-#secsignidplugin.miniview .secsignidlogo, noscript .secsignidlogo{
-    width: 55px;
-    height: 55px;
-    margin: 0 auto 20px auto;
-    float: none;
+#footer-image {
+    height: 70px;
+    margin: 10px auto 0;
+    background: url(../images/secsign-protected.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+    background-position-x: center;
 }
 
-#secsignidplugin.miniview .infobutton{
-    margin: 0 auto;
-    display: block;
+#footer-image-be {
+    height: 50px;
+    margin: 10px auto 0;
+    background: url(../images/secsign-protected.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+    background-position-x: center;
 }
 
-#secsignidplugin.miniview .linktext{
-    float: none;
-    display: block;
+#secsign-content {
+    width:auto;
+    min-width:210px;
+}
+
+.login-form-container {
+    background: white;
+}
+
+.login-form-container-large {
+    width: 100% !important;
+    max-width: 600px !important;
+}
+
+.login-form-container-large #login-form-inner {
+    width: auto;
+}
+
+.login-form-container-large #login-form-inner p {
+    text-align: start;
+}
+
+.login-form {
+    padding: 10px 10px;
+}
+
+
+.login-form h2, .login-form h3, .login-form h4, .login-form p {
     text-align: center;
-    line-height: 18px;
-    margin-top: 20px;
 }
 
-#secsignidplugin.miniview #headinginfo, #secsignidplugin.miniview #headingquestion{
+#login-form-inner {
+    max-width: 300px;
+    margin: 8px auto 0px;
+}
+
+
+.login-form-field-label {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    color: rgb(107, 119, 140);
+    font-size: 0.86em;
+    font-weight: 600;
+    line-height: 1.33;
+}
+
+
+
+.login-form-field-input {
+    max-width: 100%;
+    padding: 4px 6px;
+    background-color: rgb(250, 251, 252);
+    border-color: rgb(223, 225, 230);
+    border-radius: 3px;
+    border-width: 2px;
+    border-style: solid;
+    transition-property: background-color, border-color;
+    transition-duration: 0.2s, 0.2s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0s, 0s;
+}
+
+.login-form-field-input:hover {
+    background-color: rgb(235, 236, 240);
+}
+
+.login-form-field-input:focus-within {
+    background-color: white;
+    border-color: rgb(76, 154, 255);
+}
+
+.login-form-field-input input {
+    width: 100%;
     padding: 0;
+    font-size: 14px;
+    line-height: 1.43;
+    background: transparent;
+    border-width: 0;
+    outline: none;
+}
+
+.login-form-field-password {
+    position: relative;
+}
+
+.login-form-field-password input {
+    box-sizing: border-box;
+    padding-right: 25px;
+}
+
+.login-form-field-password-toggle {
+    position: absolute !important;
+    width: 16px !important;
+    height: 16px !important;
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.login-form-field-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.login-form-field-checkbox input {
+    width: 24px;
+    height: 24px;
+}
+
+.submit-button {
+    margin-top: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 80%;
+    line-height: 2.0em;
+    color: black;
+    background: #DDDDDD;
+    border: none;
+    transition-property: background, box-shadow;
+    transition-duration: 0.1s, 0.15s;
+    transition-timing-function: ease-out, cubic-bezier(0.47, 0.03, 0.49, 1.38);
+    transition-delay: 0s, 0s;
+}
+
+.submit-button-be {
+    width: 80%;
+    margin-top: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+}    
+
+.submit-button:hover {
+    cursor: pointer;
+    background: #AAAAAA;
+}
+
+.submit-button:disabled {
+    cursor: not-allowed;
+    color: grey;
+    background: #EEEEEE;
+}
+
+.submit-button-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+.submit-button-text-be {
+    font-size: 16px;
+}
+
+.error-container, .warning-container {
+    display: flex;
+    margin-top: 22px;
+    padding: 16px;
+    background: rgb(255, 235, 230);
+    border-radius: 3px;
+}
+
+.warning-container {
+    background: rgb(255, 255, 230);
+}
+
+.error-container p, .warning-container p {
+    margin: 0;
+    text-align: start !important;
+}
+
+.error-icon-container, .warning-icon-container {
+    width: 40px;
+    flex: 0 0 auto;
+}
+
+.error-icon {
+    display: inline-block;
+    color: rgb(191, 38, 0);
+    fill: rgb(255, 235, 230);
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.warning-icon {
+    display: inline-block;
+    color: rgb(216, 194, 0);
+    fill: rgb(255, 255, 230);
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.button-link {
+    text-decoration: underline;
+    color: black;
+}
+
+.button-link:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.button-link p {
+    margin: 10px auto;
+    padding: 10px 0;
+    text-align: center !important;
+}
+
+
+
+.submit-button-cancel {
+    background-color: rgb(196, 196, 196);
+}
+
+.submit-button-cancel .submit-button-text {
+    color: rgb(78, 78, 78);
+}
+
+.submit-button-cancel:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+.secsignid-error
+{
+    text-align: center;
+    width:90%;
+    margin: 10px 5% 10px 5%;
+    padding: 10px;
+    background: rgb(255, 235, 230);
+    border-radius: 5px;
+}
+
+#accesspass-container {
+    max-width: 120px;
+    max-height: 120px;
+    margin: 0 auto;
+    background: rgb(244, 245, 247);
+    border-radius: 50%;
+}
+
+#accesspass-image {
+    height: 70%;
+    width: 70%;
+    margin: 15% 15% 15% 15%;
+    opacity: 0.6;
+}
+
+#secsign-logout {
+    text-align: center;
+    font-size: 20px;
+}
+.ui-dialog{
+    height:auto;
+    z-Index: 1000;
+    width: 95% !important;
+    max-width: 800px;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.no-bar .ui-dialog-titlebar{
+    display: none;
+}
+
+.secsign-step {
+    font-weight: bold;
+}
+
+.secsign-app-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.secsign-app-button {
+    width: 48%;
+    margin: 0.5% auto;
+    padding: 3px;
+    line-height: 34px;
+    text-decoration: none;
+    background-color: #505050;
+    color: white !important;
+    border-radius: 3px;
+}
+
+.secsign-app-button:hover {
+    background-color: rgb(0, 82, 204);
+    color: white;
+}
+
+.secsign-app-button-icon {
+    width: 32px;
+    height: 32px;
+    padding: 5px 6px;
+    box-sizing: border-box;
+    float: left;
+    fill: white;
+}
+
+#secsign-create-form,
+#secsign-add-form {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#secsign-create-form .login-form-field,
+#secsign-add-form .login-form-field {
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+.login-form p {
+    text-align: start;
+}
+
+.divider {
+    height: 2px;
+    margin: 20px 0;
+    background-color: rgba(190, 190, 190, 0.4);
+    padding-bottom:0;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.qrcode {
+    width: 200px;
+    height: 200px;
+}
+
+.link-container {
+    margin: 1em auto;
+}
+
+.link {
+    font-size: 12px;
+    text-decoration: underline;
+    color: black;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: black;
+}
+
+#qrcode-manual-test-error {
+    color: red;
+}
+
+#qrcode-mail-container {
+    width: 100%;
+}
+
+#qrcode-mail-container p {
     text-align: center;
 }
 
-#secsignidplugin.miniview .accesspass-id{
-    display: block;
-    float: none;
+#qrcode-mail-container .login-form-field-input {
+    max-width: 220px;
+    margin: 10px auto;
+}
+
+#qrcode-mail-container .login-form-field-input input {
     text-align: center;
+}
+
+#secsign-qrcode {
+    display: none;
+}
+
+.error-container,
+.warning-container {
+    margin-bottom: 22px;
+}
+
+#secsign-add {
+    display: none;
+}
+
+.cancel-button {
+    margin-top: 60px;
+}
+
+.attention-container {
     margin: 20px 0;
 }
 
-#secsignid-accesspass-container.miniview{
-    background: none !important;
-    display: inline !important;
+#qrcode-secsign-id {
+    color: #888888;
 }
 
-#secsignid-accesspass-img.miniview{
-    padding-top: 10px !important;
+#secsign-accesspass-text
+{
+   text-align:center;
+   width: 90%;
+   margin: 10px 5% 0px 5%;
+   text-size:20px;
+   font-weight: 500;
+   text-overflow: ellipsis;
+   overflow: hidden;
 }
 
-#secsignid-loginform, #secsignidplugin #login-form, #secsign-login-form, #secsignid-accesspass-form{
-    box-shadow: none;
-    margin: 0;
-    padding: 0;
+.method-item{
+   margin-top: 25px;
+   padding: 15px;
+   border-style: solid;
+   border-width: 1px;
+   border-color: rgb(180, 180, 180);
+   border-radius: 3px; 
 }
 
-#secsignidplugin .login-remember{
-    padding-bottom: 15px;
+.method-item-be{
+   margin-top: 10px;
+   padding: 15px;
+   border-style: solid;
+   border-width: 1px;
+   border-color: rgb(180, 180, 180);
+   border-radius: 3px; 
+}
+
+.method-item:hover ,
+.method-item-be:hover
+{
+    cursor: pointer;
+    background-color: rgb(233, 240, 255);
 }
 
 
 
-#secsignidplugin input[type="checkbox"]:checked+label:before{
-    display:none;
+.column{
+    display: flex;
+    flex-direction: column;
 }
 
-#secsignidplugin input[type="checkbox"]:checked+label:after{
-    display:none;
-}
-
-
-
-/* Link on Joomla Login Screen */
-#form-login #secsignid-login-secsignid{
-    margin: 20px 0px;
-    text-align: center;
-    display: block;
-}

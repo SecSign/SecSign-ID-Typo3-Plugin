@@ -1,0 +1,156 @@
+{namespace secsignfe=SECSIGN\SecSignFE}
+ <f:cache.disable>  
+     
+    <!--###TEMPLATE_ACCESS_PASS###-->
+    <f:section name="HeaderAssets">
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <link rel="stylesheet" href="/typo3conf/ext/secsign/Resources/Public/css/secsignid_layout.css"/>
+            
+    </f:section >
+    
+    <div id="secsign-content">
+            <div class="login-form-container">
+                <div id="login-form-inner">
+                    <form class="login-form" name="accesspassAuthSecsign" method="post" id="secsignid-accesspass-form">
+                        <input type="hidden" name="secsign_method" value="secsign_checkAccessPass"/>
+                        <input type="hidden" name="secsigniduserid" value="###secsigniduserid###"/>
+                        <input type="hidden" name="secsignidauthsessionid" value="###secsignidauthsessionid###"/>
+                        <input type="hidden" name="secsignidservicename" value="###secsignidservicename###"/>
+                        <input type="hidden" name="secsignidserviceaddress" value="###secsignidserviceaddress###"/>
+                        <input type="hidden" name="secsignidauthsessionicondata" value="###secsignidauthsessionicondata###"/>
+                        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+                        <input type="hidden" name="secsign_username" value="###secsign_username###" />
+                        
+
+                        <div id="accesspass-container">
+                            <img id="accesspass-image" src="data:image/png;base64,###ACCESS_PASS_DATA###">
+                        </div>
+
+                        <div id="secsign-accesspass-text" >###secsign.accesspass.for.text### ###secsigniduserid###</div>
+
+                        
+                    </form>
+                    <form name="cancelAccessPass" method="post" id="secsignid-accesspass-cancel-form">
+                        <button class="submit-button" name="secsignid-cancel-button">
+                            <span class="submit-button-text">###secsign.button.cancel###</span>
+                        </button>
+                        <input type="hidden" name="secsign_method" value="secsign_cancelAccessPass"/>
+                        <input type="hidden" name="secsigniduserid" value="###secsigniduserid###"/>
+                        <input type="hidden" name="secsignidauthsessionid" value="###secsignidauthsessionid###"/>
+                        <input type="hidden" name="secsignidservicename" value="###secsignidservicename###"/>
+                        <input type="hidden" name="secsignidserviceaddress" value="###secsignidserviceaddress###"/>
+                        <input type="hidden" name="secsignidauthsessionicondata" value="###secsignidauthsessionicondata###"/>
+                        <input type="hidden" name="redirect_to" value="###redirect_to###"/>
+                        <input type="hidden" name="secsign_username" value="###secsign_username###" />
+                    </form>
+                     <a target="_blank" href="https://secsign.com">
+                        <div id="footer-image"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+           
+    
+    
+
+    
+
+         
+    <!--###TEMPLATE_ACCESS_PASS###-->
+    <!--###TEMPLATE_NO_LOGIN_ACCESS_PASS###-->
+    <script> 
+                 
+        var timeoutObject=window.setTimeout(function()
+        {
+            $("#secsignid-accesspass-form").submit();
+        }, 3000);
+        jQuery("#secsignid-cancelbutton").click(function( )
+        {
+            clearTimeout(timeoutObject);
+            $("#secsignid-accesspass-cancel-form").submit();
+        });
+
+
+
+    </script>
+    <!--###TEMPLATE_NO_LOGIN_ACCESS_PASS###-->
+    <!--###TEMPLATE_LOGIN_ON_ACCESS_PASS###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script>
+            jQuery(document).ready(function (event) {
+                jQuery.post(
+                    window.location.href,
+                    {
+                        "user":jQuery("#secsign_username").val(),
+                        "pass":"pass:;secsign_token:"+jQuery("#authedHash").val(),
+                        "pid":"",
+                        "logintype":"login"
+                    }
+                )
+                .done(function() {
+                    window.setTimeout(function()
+                    {
+                        if(jQuery("#returnURL").val()!=='')
+                        {
+                            window.location.replace(jQuery("#returnURL").val());
+                        }else{
+                            window.location.replace(window.location.href);
+                        }
+                    },1000)
+                    
+                });
+            });
+            
+            
+        </script>
+    </f:section >
+       
+    <input type="hidden" id="returnURL" value="###RETURN_URL###" />
+    <input type="hidden" id="authedHash" value="###AUTHED_HASH###"/>
+    <input type="hidden" id="secsignid" value="###SECSIGN_ID###"/>
+    <input type="hidden" id="secsign_username" value="###USERNAME###"/>
+    <!--###TEMPLATE_LOGIN_ON_ACCESS_PASS###-->
+
+    <!--###TEMPLATE_SWITCH_METHOD_ACCESS_PASS###-->
+    <f:section name="HeaderAssets">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script>
+            jQuery(document).ready(function (event) {
+                
+                $("#secsignid-switch-link").insertAfter($("#secsignid-accesspass-form"));
+                $("#secsignid-accesspass-form").append("<input type='hidden' name='secsignidswitchallowed' value='true'/>");
+                $("#change").click(function ()
+                {
+                    clearTimeout(timeoutObject);
+                    $("#secsignid-switch-form").submit();
+                });
+            });
+            
+            
+        </script>
+    </f:section >
+    <form style="display:none" class="login-form" name="accesspassAuthSecsign" method="post" id="secsignid-switch-form">
+        <input type="hidden" name="secsign_method" value="secsign_changeMethod"/>
+        <input type="hidden" name="secsign_changeFrom" value="secsignid"/>
+        
+        <input type="hidden" name="secsigniduserid" value="###secsigniduserid###"/>
+        <input type="hidden" name="secsignidauthsessionid" value="###secsignidauthsessionid###"/>
+        <input type="hidden" name="secsignidservicename" value="###secsignidservicename###"/>
+        <input type="hidden" name="secsignidserviceaddress" value="###secsignidserviceaddress###"/>
+        <input type="hidden" name="secsignidauthsessionicondata" value="###secsignidauthsessionicondata###"/>
+        <input type="hidden" name="returnURL" value="###RETURN_URL###" />
+
+       
+        
+
+    </form>
+    <center id="secsignid-switch-link">
+            <a id="change" class="link">
+                Switch Method
+            </a>
+    </center>
+    
+    <!--###TEMPLATE_SWITCH_METHOD_ACCESS_PASS###-->
+    
+   </f:cache.disable>
